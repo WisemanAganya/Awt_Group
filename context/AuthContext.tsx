@@ -19,55 +19,82 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [isAdmin, setIsAdmin] = useState(false);
 
     useEffect(() => {
-        // Check active session
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-            setUser(session?.user ?? null);
-            if (session?.user) {
-                checkUserRole(session.user.id);
-            } else {
-                setLoading(false);
+        let mounted = true;
+
+        const initializeAuth = async () => {
+            try {
+                // Set a timeout for the session check
+                const sessionPromise = supabase.auth.getSession();
+                const timeoutPromise = new Promise((_, reject) => 
+                    setTimeout(() => reject(new Error("Auth timeout")), 5000)
+                );
+
+                const { data: { session } } = await Promise.race([sessionPromise, timeoutPromise]) as any;
+                
+                if (mounted) {
+                    setSession(session);
+                    setUser(session?.user ?? null);
+                    if (session?.user) {
+                        await checkUserRole(session.user.id);
+                    } else {
+                        setLoading(false);
+                    }
+                }
+            } catch (error) {
+                console.error("Auth initialization error:", error);
+                if (mounted) {
+                    setLoading(false);
+                }
             }
-        });
+        };
+
+        initializeAuth();
 
         // Listen for changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-            setSession(session);
-            setUser(session?.user ?? null);
-            if (session?.user) {
-                checkUserRole(session.user.id);
-            } else {
-                setLoading(false);
-                setIsAdmin(false);
+            if (mounted) {
+                setSession(session);
+                setUser(session?.user ?? null);
+                if (session?.user) {
+                    checkUserRole(session.user.id);
+                } else {
+                    setLoading(false);
+                    setIsAdmin(false);
+                }
             }
         });
 
-        return () => subscription.unsubscribe();
+        return () => {
+            mounted = false;
+            subscription.unsubscribe();
+        };
     }, []);
 
     const checkUserRole = async (userId: string) => {
         try {
             // STRICT ADMIN ENFORCEMENT
             // Only 'aganyawiseman@gmail.com' is allowed.
-            const { data: { user } } = await supabase.auth.getUser();
+            const { data: { user }, error } = await supabase.auth.getUser();
+            
+            if (error) throw error;
 
             if (user?.email === 'aganyawiseman@gmail.com') {
                 setIsAdmin(true);
             } else {
                 // If not the admin, strictly deny access and sign out
                 setIsAdmin(false);
-                await supabase.auth.signOut();
-                alert("ACCESS DENIED: This system is for the Administrator only.");
-                window.location.href = '/'; // Force redirect
+                // Only sign out if we're actually logged in as someone else
+                if (user) {
+                    await supabase.auth.signOut();
+                    alert("ACCESS DENIED: This system is for the Administrator only.");
+                    window.location.href = '/'; // Force redirect
+                }
             }
-
-            setLoading(false);
         } catch (error) {
             console.error("Error checking role:", error);
-            setLoading(false);
-            // Default to deny on error
             setIsAdmin(false);
-            await supabase.auth.signOut();
+        } finally {
+            setLoading(false);
         }
     };
 
