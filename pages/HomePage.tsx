@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { services } from '../constants';
+import { services, portfolioProjects } from '../constants';
 import { BusinessIcon, MobileIcon, EcommerceIcon } from '../components/icons';
 import { usePageContent } from '../hooks/usePageContent';
 
@@ -47,10 +47,26 @@ const HomePage: React.FC = () => {
         .select('*')
         .order('created_at', { ascending: false })
         .limit(3);
-      if (data) setRecentProjects(data);
+      
+      const mappedStatic = portfolioProjects.slice(0, 3).map((p, idx) => ({
+        id: `static-${idx}`,
+        title: p.title,
+        category: p.category,
+        image_url: p.image,
+        link: p.link
+      }));
+
+      if (data && data.length > 0) {
+        // Merge and take the most recent 3
+        const combined = [...mappedStatic, ...data].slice(0, 3);
+        setRecentProjects(combined);
+      } else {
+        setRecentProjects(mappedStatic);
+      }
     };
     fetchProjects();
   }, []);
+
 
   return (
     <div className="min-h-screen relative">

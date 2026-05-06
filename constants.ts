@@ -18,12 +18,72 @@ export const services = [
 ];
 
 export const portfolioProjects = [
-    { title: "Ride-Hailing App", category: "Mobile Apps", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2070" },
-    { title: "Real Estate Portal", category: "Web Application", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1973" },
-    { title: "SME Inventory System", category: "Business Management", image: "https://images.unsplash.com/photo-1586864387917-f53bc2644343?auto=format&fit=crop&q=80&w=2070" },
-    { title: "Online Fashion Store", category: "E-commerce", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&q=80&w=2070" },
-    { title: "Fintech Payment Gateway", category: "Digital Payments", image: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&q=80&w=2070" },
+    { 
+        title: "Apex Sports & Gear", 
+        description: "A premium athletic equipment and apparel e-commerce platform designed for high-performance sports enthusiasts, featuring a streamlined checkout and inventory management.",
+        category: "E-commerce", 
+        image: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=2070",
+        link: "https://apex-sports-gear.vercel.app/",
+        github: "https://github.com/WisemanAganya/Apex-Sports-Gear"
+    },
+    { 
+        title: "Project MindStrong", 
+        description: "A dedicated mental resilience platform for athletes, providing advocacy, mentorship, and community-driven support to champion mental wellness in sports.",
+        category: "Health & Wellness", 
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=2040",
+        link: "https://mind-fiti-game-fiti.vercel.app/",
+        github: "https://github.com/WisemanAganya/MindFiti_GameFiti"
+    },
+    { 
+        title: "NJO Bar", 
+        description: "An executive cocktail and bar management system offering seamless booking, inventory tracking, and a premium digital experience for high-end hospitality venues.",
+        category: "Hospitality", 
+        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2070",
+        link: "https://njo-bar.vercel.app/",
+        github: "https://github.com/WisemanAganya/NJO-Bar"
+    },
+    { 
+        title: "AWT Group", 
+        description: "The official corporate ecosystem for AWT Group, showcasing high-performance digital systems, IT consultation, and transformative business solutions.",
+        category: "Corporate Solutions", 
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069",
+        link: "https://awt-group.vercel.app/",
+        github: "https://github.com/WisemanAganya/Awt_Group"
+    },
+    { 
+        title: "Tweletu Band", 
+        description: "A dynamic musical engagement platform for Tweletu Band, featuring event scheduling, fan interactions, and a rich media gallery of live performances.",
+        category: "Entertainment", 
+        image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&q=80&w=2070",
+        link: "https://tweletu-band.vercel.app/",
+        github: "https://github.com/WisemanAganya/Tweletu-band"
+    },
+    { 
+        title: "Fan Times Kitchen", 
+        description: "A premium culinary showcase and catering management platform, delivering bespoke gourmet experiences and event booking services.",
+        category: "Culinary", 
+        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=2070",
+        link: "https://fan-times-kitchen.vercel.app/",
+        github: "https://github.com/WisemanAganya/fan-times-kitchen"
+    },
+    { 
+        title: "Mama J Cakes", 
+        description: "An elegant confectionery e-commerce platform specializing in custom artisanal cakes, featuring an integrated ordering and delivery ecosystem.",
+        category: "E-commerce", 
+        image: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&q=80&w=1974",
+        link: "https://mama-j-cakes.vercel.app/",
+        github: "https://github.com/WisemanAganya/Mama-J-Cakes"
+    },
+    { 
+        title: "3rd Way Fitness", 
+        description: "A comprehensive gym management and athletic performance tracking system designed to foster community growth and optimize individual training results.",
+        category: "Fitness & Health", 
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2070",
+        link: "https://3rd-way-fitness.vercel.app/",
+        github: "https://github.com/WisemanAganya/3rd-Way-Fitness"
+    },
 ];
+
 
 export const teamMembers = [
     { name: "George Wandera Makideu", role: "CEO and Head of Business Development", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=1587" },
