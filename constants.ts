@@ -19,6 +19,14 @@ export const services = [
 
 export const portfolioProjects = [
     { 
+        title: "Kenya Harlequins RFC", 
+        description: "The official digital ecosystem for Kenya Harlequins RFC, featuring integrated ticketing, merchandise commerce, and real-time athletic performance updates.",
+        category: "Sports & Entertainment", 
+        image: "https://images.unsplash.com/photo-1508946755831-25508c996bce?auto=format&fit=crop&q=80&w=2070",
+        link: "https://kenya-harlequins.vercel.app/",
+        github: "https://github.com/WisemanAganya/Kenya-Harlequins"
+    },
+    { 
         title: "Apex Sports & Gear", 
         description: "A premium athletic equipment and apparel e-commerce platform designed for high-performance sports enthusiasts, featuring a streamlined checkout and inventory management.",
         category: "E-commerce", 
