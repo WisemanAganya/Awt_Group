@@ -67,7 +67,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="ml-6">
                     <h3 className="text-lg font-bold text-white mb-1">Our Headquarters</h3>
-                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.address || 'Kampala, Uganda')}</p>
+                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.address || 'Nairobi, Kenya')}</p>
                   </div>
                 </div>
                 
@@ -77,7 +77,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="ml-6">
                     <h3 className="text-lg font-bold text-white mb-1">Email Us</h3>
-                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.email || 'info@awtgroup.com')}</p>
+                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.email || 'awtgroup.co.ke')}</p>
                   </div>
                 </div>
                 
@@ -87,7 +87,7 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="ml-6">
                     <h3 className="text-lg font-bold text-white mb-1">Call Us</h3>
-                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.phone || '+256 700 000 000')}</p>
+                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.phone || '+254714441312')}</p>
                   </div>
                 </div>
               </div>

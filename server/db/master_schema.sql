@@ -234,8 +234,8 @@ WITH CHECK (EXISTS (SELECT 1 FROM public.profiles WHERE profiles.id = auth.uid()
 INSERT INTO public.page_content (section_slug, content)
 VALUES 
 ('home_hero', '{"title": "Web & Mobile Application Systems", "subtitle": "Addressing challenges and solutions for economic development through innovative technology.", "cta_text": "Get Started", "cta_link": "/contact"}'),
-('home_stats', '{"years": "10+", "projects": "150+", "clients": "80+", "team": "50+"}'),
-('contact_info', '{"email": "info@awtgroup.com", "phone": "+256 700 000 000", "address": "Kampala, Uganda"}'),
+('home_stats', '{"years": "1", "projects": "5+", "clients": "5+", "team": "5+"}'),
+('contact_info', '{"email": "awtgroup.co.ke", "phone": "+254714441312", "address": "Nairobi, Kenya"}'),
 ('about_content', '{"mission": "To empower businesses and curious minds through innovative technology solutions, education, and strategic consultancy, fostering growth and efficiency in the digital age.", "vision": "To be the leading catalyst for technological advancement and digital transformation, recognizing and nurturing potential to create lasting impact."}')
 ON CONFLICT (section_slug) DO NOTHING;
 
