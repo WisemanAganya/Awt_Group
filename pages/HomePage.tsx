@@ -165,11 +165,11 @@ const HomePage: React.FC = () => {
               <h2 className="text-5xl font-extrabold text-white mb-8 group-hover:text-blue-400 transition-colors">Empowering Global Enterprises</h2>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <div className="text-4xl font-extrabold text-white mb-1">10+</div>
-                  <div className="text-[10px] text-awt-text-secondary uppercase tracking-widest font-bold">Years Experience</div>
+                  <div className="text-4xl font-extrabold text-white mb-1">1</div>
+                  <div className="text-[10px] text-awt-text-secondary uppercase tracking-widest font-bold">Year Experience</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-white mb-1">150+</div>
+                  <div className="text-4xl font-extrabold text-white mb-1">5+</div>
                   <div className="text-[10px] text-awt-text-secondary uppercase tracking-widest font-bold">Systems Built</div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ const HomePage: React.FC = () => {
             
             <div className="bento-item-wide glass-card p-8 group flex items-center gap-8 reveal" style={{ animationDelay: '0.1s' }}>
               <div className="w-24 h-24 rounded-2xl bg-white/5 flex items-center justify-center text-blue-500 text-3xl font-bold group-hover:bg-blue-500 group-hover:text-white transition-all">
-                80+
+                5+
               </div>
               <div>
                 <h3 className="text-xl font-bold text-white mb-2">Happy Clients</h3>
@@ -186,7 +186,7 @@ const HomePage: React.FC = () => {
             </div>
 
             <div className="glass-card p-8 flex flex-col justify-center items-center text-center group reveal" style={{ animationDelay: '0.2s' }}>
-              <div className="text-3xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform">50+</div>
+              <div className="text-3xl font-extrabold text-white mb-2 group-hover:scale-110 transition-transform">5+</div>
               <div className="text-[10px] text-awt-text-secondary uppercase tracking-widest font-bold">Tech Experts</div>
             </div>
 

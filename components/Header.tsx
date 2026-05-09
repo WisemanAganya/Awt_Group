@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import { MenuIcon, XIcon } from './icons';
 import { useAuth } from '../context/AuthContext';
+import { navLinks } from '../constants';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,13 +47,13 @@ const Header: React.FC = () => {
             </Link>
 
             <div className="hidden md:flex space-x-8 items-center">
-              {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+              {navLinks.map((link) => (
                 <Link 
-                  key={item} 
-                  to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
+                  key={link.name} 
+                  to={link.path} 
                   className="text-sm font-medium text-awt-text-secondary hover:text-white transition-colors relative group/link"
                 >
-                  {item}
+                  {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-500 transition-all duration-300 group-hover/link:w-full"></span>
                 </Link>
               ))}
@@ -103,20 +104,21 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       <div className={`md:hidden fixed inset-0 z-40 bg-awt-bg/95 backdrop-blur-2xl transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-        <div className="flex flex-col items-center justify-center h-full space-y-8">
-          {['Home', 'About', 'Services', 'Portfolio', 'Contact'].map((item) => (
+        <div className="flex flex-col items-center justify-center h-full space-y-6">
+          {navLinks.map((link) => (
             <Link 
-              key={item} 
-              to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} 
-              className="text-3xl font-bold text-white hover:text-blue-500 transition-colors" 
+              key={link.name} 
+              to={link.path} 
+              className="text-2xl font-bold text-white hover:text-blue-500 transition-colors" 
               onClick={() => setIsOpen(false)}
             >
-              {item}
+              {link.name}
             </Link>
           ))}
-          <div className="h-px w-20 bg-white/10"></div>
-          <Link to="/products/biztracker-pro" className="text-xl font-medium text-awt-text-secondary" onClick={() => setIsOpen(false)}>BizTracker Pro</Link>
-          <Link to="/products/twende" className="text-xl font-medium text-awt-text-secondary" onClick={() => setIsOpen(false)}>Twende House Hunting</Link>
+          <div className="h-px w-20 bg-white/10 my-4"></div>
+          <div className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Our Products</div>
+          <Link to="/products/biztracker-pro" className="text-lg font-medium text-awt-text-secondary hover:text-white" onClick={() => setIsOpen(false)}>BizTracker Pro</Link>
+          <Link to="/products/twende" className="text-lg font-medium text-awt-text-secondary hover:text-white" onClick={() => setIsOpen(false)}>Twende House Hunting</Link>
           <div className="pt-8">
             {user ? (
               <Link to="/hq" className="btn-primary text-xl px-12 py-4" onClick={() => setIsOpen(false)}>Admin Console</Link>
