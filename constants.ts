@@ -10,11 +10,49 @@ export const navLinks = [
 ];
 
 export const services = [
-    { name: "Web & Mobile App Development", description: "High-performance custom applications built for iOS, Android, and web platforms using state-of-the-art tech stacks.", icon: 'Mobile' },
-    { name: "Prototyping", description: "Turning visionary ideas into interactive prototypes to validate concepts and user experiences before full-scale build.", icon: 'Business' },
-    { name: "Professional Portfolio Building", description: "Crafting stunning, state-of-the-art digital portfolios for professionals and creatives to showcase their legacy.", icon: 'Ecommerce' },
-    { name: "IT System & Project Consultation", description: "Expert strategic consulting for IT infrastructure, system architecture, and digital project management.", icon: 'Business' },
-    { name: "Hosting & Deployment", description: "Reliable, secure, and scalable cloud hosting solutions ensuring your applications are always accessible and performing.", icon: 'Mobile' },
+    { 
+        name: "Web Application Development", 
+        description: "Scalable, secure, and high-performance web applications tailored to your business processes.", 
+        icon: 'Mobile' 
+    },
+    { 
+        name: "Enterprise Systems & POS Solutions", 
+        description: "Robust enterprise systems and POS solutions that automate operations, improve accuracy, and drive efficiency.", 
+        icon: 'Business' 
+    },
+    { 
+        name: "Business Process Automation", 
+        description: "Digitize and automate workflows to reduce manual tasks, cut costs, and boost productivity.", 
+        icon: 'Ecommerce' 
+    },
+    { 
+        name: "IT Consultation & Prototyping", 
+        description: "From idea to solution - we consult, design, and prototype systems that align with your business goals.", 
+        icon: 'Business' 
+    },
+];
+
+export const industries = [
+    { 
+        name: "Business Sector", 
+        description: "Streamlining operations and driving growth for modern businesses.", 
+        icon: 'Business' 
+    },
+    { 
+        name: "Transport Sector", 
+        description: "Smart systems for fleet management, scheduling, ticketing, and logistics.", 
+        icon: 'Mobile' 
+    },
+    { 
+        name: "Real Estate Sector", 
+        description: "Digital solutions for property management, listings, rentals, and real estate operations.", 
+        icon: 'Ecommerce' 
+    },
+    { 
+        name: "Financial Sector", 
+        description: "Secure, compliant, and efficient systems for finance, banking, and microfinance.", 
+        icon: 'Business' 
+    },
 ];
 
 export const portfolioProjects = [
@@ -100,12 +138,7 @@ export const teamMembers = [
 ];
 
 
-export const jobOpenings = [
-    { title: "Senior React Developer", department: "Engineering", location: "Remote", type: "Full-time" },
-    { title: "UI/UX Designer", department: "Design", location: "Hybrid", type: "Full-time" },
-
-    { title: "Digital Marketing Specialist", department: "Marketing", location: "Remote", type: "Part-time" },
-];
+export const jobOpenings = [];
 
 export const blogPosts = [
     { title: "The Future of Mobile App Development in Africa", date: "October 26, 2023", author: "Jane Smith", image: "https://picsum.photos/seed/future-of-mobile-apps/600/400" },

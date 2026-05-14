@@ -84,10 +84,10 @@ const HomePage: React.FC = () => {
               <span className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">Next-Gen Digital Systems</span>
             </div>
             <h1 className="hero-title text-gradient leading-[0.9]">
-              {heroBanner?.title || 'Web & Mobile Application Systems'}
+              {heroBanner?.title || 'Innovative Web & Enterprise Systems'}
             </h1>
             <p className="hero-subtitle mb-12">
-              {heroBanner?.subtitle || 'Addressing challenges and solutions for economic development through innovative technology.'}
+              {heroBanner?.subtitle || 'We design and build powerful web applications and enterprise systems that streamline operations, enhance efficiency, and drive business growth.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Link to="/contact" className="btn-primary px-10 py-4 text-lg">
