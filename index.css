@@ -170,6 +170,29 @@ h1, h2, h3, h4, .font-display {
   padding: 8rem 0;
 }
 
+/* Bento Grid Layout */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(300px, 1fr));
+  }
+  
+  .bento-item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  
+  .bento-item-wide {
+    grid-column: span 2;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: var(--awt-bg); }

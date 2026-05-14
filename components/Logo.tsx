@@ -28,8 +28,8 @@ const Logo: React.FC<LogoProps> = ({ className = 'h-12' }) => {
         className="h-full w-auto object-contain transition-transform duration-500 hover:scale-110" 
       />
       <div className="flex flex-col">
-        <span className="text-xl md:text-2xl font-black text-white tracking-tighter leading-none font-display">AWT <span className="text-blue-500 italic">GROUP</span></span>
-        <span className="text-[8px] font-bold text-blue-400 uppercase tracking-[0.3em] mt-1 hidden md:block">Innovating the Future</span>
+        <span className="text-2xl md:text-3xl font-black text-white tracking-[0.45em] leading-none font-display">AWT <span className="text-blue-500 italic">GROUP</span></span>
+        <span className="text-[6px] md:text-[7px] font-bold text-blue-400 uppercase tracking-[0.12em] mt-1 hidden md:block">Transforming Businesses and Lives through Innovation</span>
       </div>
     </div>
   );
