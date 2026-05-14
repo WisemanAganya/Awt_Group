@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase } from '../supabaseClient';
 import { MenuIcon, XIcon } from './icons';
 import { useAuth } from '../context/AuthContext';
 import { navLinks } from '../constants';
+import Logo from './Logo';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [logoUrl, setLogoUrl] = useState<string>('');
   const { user } = useAuth();
 
   useEffect(() => {
@@ -19,31 +18,13 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const fetchLogo = async () => {
-      const { data } = await supabase
-        .from('system_settings')
-        .select('value')
-        .eq('key', 'site_logo')
-        .single();
-      if (data) setLogoUrl(data.value);
-    };
-    fetchLogo();
-  }, []);
-
   return (
     <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'top-4' : 'top-0'}`}>
       <div className="container-premium">
         <div className={`transition-all duration-500 ${isScrolled ? 'glass-card mx-auto px-8 py-0' : 'bg-transparent py-4'}`}>
           <div className="flex justify-between items-center h-20">
             <Link to="/" className="flex items-center space-x-2 group">
-              {logoUrl ? (
-                <img src={logoUrl} alt="AWT Group" className="h-10 w-auto object-contain group-hover:scale-110 transition-transform duration-500" />
-              ) : (
-                <span className="text-2xl font-extrabold text-white tracking-tight group-hover:scale-105 transition-transform duration-500">
-                  AWT<span className="text-blue-500">Group</span>
-                </span>
-              )}
+              <Logo className="h-10" />
             </Link>
 
             <div className="hidden md:flex space-x-8 items-center">

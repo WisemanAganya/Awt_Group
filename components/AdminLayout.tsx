@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Outlet, Navigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Logo from './Logo';
 
 const AdminLayout: React.FC = () => {
     const { user, isAdmin, loading, signOut } = useAuth();
@@ -20,13 +21,8 @@ const AdminLayout: React.FC = () => {
       <aside className="w-80 relative z-20 hidden lg:block p-8">
         <div className="glass-card h-full flex flex-col backdrop-blur-3xl border-white/10">
           <div className="p-8 border-b border-white/5">
-            <div className="flex items-center gap-4 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white font-black italic">A</div>
-              <div>
-                <h2 className="text-xl font-black text-white tracking-tighter uppercase">Control <span className="text-blue-500">X</span></h2>
-                <p className="text-[9px] font-bold text-awt-text-secondary uppercase tracking-[0.3em]">AWT Command Unit</p>
-              </div>
-            </div>
+            <Logo className="h-12 mb-2" />
+            <p className="text-[9px] font-bold text-blue-400 uppercase tracking-[0.4em] ml-1 mt-4">Command Center</p>
           </div>
           
           <nav className="flex-grow p-6 space-y-2 overflow-y-auto custom-scrollbar">
@@ -80,7 +76,7 @@ const AdminLayout: React.FC = () => {
       <div className="flex-1 flex flex-col relative z-10 p-8 h-screen overflow-hidden">
         {/* Mobile Header */}
         <header className="lg:hidden glass-card p-6 flex justify-between items-center mb-8">
-          <span className="text-xl font-black text-white tracking-tighter italic">AWT CONTROL</span>
+          <Logo className="h-8" />
           <button className="w-10 h-10 rounded-xl bg-blue-500 flex items-center justify-center text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
           </button>

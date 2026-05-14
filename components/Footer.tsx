@@ -16,9 +16,7 @@ const Footer: React.FC = () => {
           {/* Brand Identity */}
           <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-8 group">
-              <span className="text-3xl font-extrabold text-white tracking-tighter">
-                AWT<span className="text-blue-500">Group</span>
-              </span>
+              <Logo className="h-14" />
             </Link>
             <p className="text-awt-text-secondary text-sm leading-relaxed mb-8 max-w-xs">
               Pioneering the digital frontier with state-of-the-art solutions that transform businesses and empower lives through relentless innovation.

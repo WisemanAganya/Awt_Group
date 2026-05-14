@@ -141,7 +141,16 @@ export const teamMembers = [
 export const jobOpenings = [];
 
 export const blogPosts = [
-    { title: "The Future of Mobile App Development in Africa", date: "October 26, 2023", author: "Jane Smith", image: "https://picsum.photos/seed/future-of-mobile-apps/600/400" },
-
-    { title: "Navigating Digital Payments in Emerging Markets", date: "October 15, 2023", author: "Peter Jones", image: "https://picsum.photos/seed/global-fintech-payments/600/400" },
+    { 
+        title: "The Future of Mobile App Development in Africa", 
+        date: "October 26, 2023", 
+        author: "Jane Smith", 
+        image: "/assets/img/The Future of Mobile App Development in Africa.PNG" 
+    },
+    { 
+        title: "Navigating Digital Payments in Emerging Markets", 
+        date: "October 15, 2023", 
+        author: "Peter Jones", 
+        image: "/assets/img/Navigating Digital Payments in Emerging Markets.PNG" 
+    },
 ];

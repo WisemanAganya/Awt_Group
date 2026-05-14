@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
-import { BusinessIcon } from '../components/icons';
 
 interface Service {
   id: string;
@@ -9,7 +8,6 @@ interface Service {
   image_url: string;
   features: string[];
 }
-
 import { services as fallbackServices, industries } from '../constants';
 import { BusinessIcon, MobileIcon, EcommerceIcon } from '../components/icons';
 
