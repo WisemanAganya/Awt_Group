@@ -10,7 +10,7 @@ interface TeamMember {
   photo_url: string;
 }
 
-import { VisionIcon, MissionIcon } from '../components/icons';
+import { VisionIcon, MissionIcon, MailIcon, PhoneIcon } from '../components/icons';
 import { teamMembers } from '../constants';
 
 
