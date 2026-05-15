@@ -34,26 +34,42 @@ export const services = [
 
 export const industries = [
     { 
-        name: "Business Sector", 
-        description: "Streamlining operations and driving growth for modern businesses.", 
-        icon: 'Business' 
+        name: "For SME's", 
+        description: "Custom business systems, inventory & sales management, accounting & reporting tools, and workflow automation.", 
+        tagline: "Simplify operations. Grow faster.",
+        icon: 'SME',
+        features: ["Custom business systems", "Inventory & sales management", "Accounting & reporting tools", "Workflow automation"]
     },
     { 
-        name: "Transport Sector", 
-        description: "Smart systems for fleet management, scheduling, ticketing, and logistics.", 
-        icon: 'Mobile' 
+        name: "For Real Estate", 
+        description: "Property management systems, listings & property portals, rent collection & invoicing, and client & agent management.", 
+        tagline: "Manage properties. Maximize value.",
+        icon: 'RealEstate',
+        features: ["Property management systems", "Listings & property portals", "Rent collection & invoicing", "Client & agent management"]
     },
     { 
-        name: "Real Estate Sector", 
-        description: "Digital solutions for property management, listings, rentals, and real estate operations.", 
-        icon: 'Ecommerce' 
+        name: "For Transportation", 
+        description: "Fleet management systems, booking & ticketing systems, route & schedule management, and driver & vehicle tracking.", 
+        tagline: "Move smarter. Deliver better.",
+        icon: 'Transport',
+        features: ["Fleet management systems", "Booking & ticketing systems", "Route & schedule management", "Driver & vehicle tracking"]
     },
     { 
-        name: "Financial Sector", 
-        description: "Secure, compliant, and efficient systems for finance, banking, and microfinance.", 
-        icon: 'Business' 
+        name: "For Finance", 
+        description: "Loan & credit management, financial reporting systems, and transaction management.", 
+        tagline: "Efficient systems. Better decisions.",
+        icon: 'Finance',
+        features: ["Loan & credit management", "Financial reporting systems", "Transaction management"]
     },
 ];
+
+export const keyValues = [
+    { title: "Tailored Solutions", description: "We build solutions that fit your unique business needs and goals.", icon: "Tailored" },
+    { title: "Innovation Driven", description: "We leverage the latest technology to deliver smarter solutions.", icon: "Innovation" },
+    { title: "Client Focused", description: "We work closely with you from concept to successful delivery.", icon: "Client" },
+    { title: "Results That Matter", description: "Our solutions drive efficiency, growth, and measurable impact.", icon: "Results" },
+];
+
 
 export const portfolioProjects = [
     { 

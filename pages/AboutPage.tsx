@@ -10,7 +10,9 @@ interface TeamMember {
   photo_url: string;
 }
 
+import { VisionIcon, MissionIcon } from '../components/icons';
 import { teamMembers } from '../constants';
+
 
 const AboutPage: React.FC = () => {
   const { content: aboutContent, loading: aboutLoading } = usePageContent('about_content');
@@ -41,23 +43,25 @@ const AboutPage: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-12">
             <div className="glass-card p-12 md:p-16 group hover:bg-blue-500/[0.02] transition-all reveal">
               <div className="w-20 h-20 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-10 text-blue-500 shadow-[0_0_30px_rgba(0,87,184,0.2)] group-hover:shadow-[0_0_50px_rgba(0,87,184,0.4)] transition-all">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                <MissionIcon />
               </div>
               <h2 className="text-4xl font-extrabold mb-8 text-white tracking-tight">Our Mission</h2>
               <p className="text-awt-text-secondary leading-relaxed text-lg">
                 "To build innovative digital solutions that empower businesses, create opportunities, and drive sustainable economic growth while operating with integrity, excellence, and purpose."
               </p>
             </div>
+
             
             <div className="glass-card p-12 md:p-16 group hover:bg-cyan-500/[0.02] transition-all reveal" style={{ animationDelay: '0.2s' }}>
               <div className="w-20 h-20 rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-10 text-cyan-500 shadow-[0_0_30px_rgba(0,163,224,0.2)] group-hover:shadow-[0_0_50px_rgba(0,163,224,0.4)] transition-all">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                <VisionIcon />
               </div>
               <h2 className="text-4xl font-extrabold mb-8 text-white tracking-tight">Our Vision</h2>
               <p className="text-awt-text-secondary leading-relaxed text-lg italic">
-                "Transforming Business and Lives through Innovation."
+                "Transforming Businesses and Lives through Innovation."
               </p>
             </div>
+
           </div>
         </div>
       </section>
@@ -98,6 +102,31 @@ const AboutPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Contact Info Footer (Fallback) */}
+      <section className="mt-20">
+        <div className="container-premium flex flex-col md:flex-row gap-12 justify-center">
+            <div className="flex items-start group">
+              <div className="w-14 h-14 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center flex-shrink-0 group-hover:bg-cyan-500 group-hover:text-white transition-colors duration-300">
+                <MailIcon />
+              </div>
+              <div className="ml-6">
+                <h3 className="text-lg font-bold text-white mb-1">Email Us</h3>
+                <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.email || 'awtgroup.co.ke')}</p>
+              </div>
+            </div>
+            
+            <div className="flex items-start group">
+              <div className="w-14 h-14 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center flex-shrink-0 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
+                <PhoneIcon />
+              </div>
+              <div className="ml-6">
+                <h3 className="text-lg font-bold text-white mb-1">Call Us</h3>
+                <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.phone || '+254 714 441 312')}</p>
+              </div>
+            </div>
         </div>
       </section>
     </div>

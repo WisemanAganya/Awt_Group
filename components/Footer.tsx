@@ -73,9 +73,10 @@ const Footer: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-awt-text-secondary uppercase tracking-widest mb-1">Call Us</div>
-                  <div className="text-sm text-white">+254714441312</div>
+                  <div className="text-sm text-white">+254 714 441 312</div>
                 </div>
               </li>
+
             </ul>
           </div>
 

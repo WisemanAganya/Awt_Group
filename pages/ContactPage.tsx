@@ -87,9 +87,10 @@ const ContactPage: React.FC = () => {
                   </div>
                   <div className="ml-6">
                     <h3 className="text-lg font-bold text-white mb-1">Call Us</h3>
-                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.phone || '+254714441312')}</p>
+                    <p className="text-gray-400 text-lg">{loading ? 'Loading...' : (contactInfo?.phone || '+254 714 441 312')}</p>
                   </div>
                 </div>
+
               </div>
             </div>
 

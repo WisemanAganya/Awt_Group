@@ -1,15 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
-import { services, portfolioProjects } from '../constants';
-import { BusinessIcon, MobileIcon, EcommerceIcon } from '../components/icons';
+import { services, portfolioProjects, industries, keyValues } from '../constants';
+import { 
+  BusinessIcon, 
+  MobileIcon, 
+  EcommerceIcon, 
+  SMEIcon, 
+  RealEstateIcon, 
+  TransportIcon, 
+  FinanceIcon,
+  VisionIcon,
+  MissionIcon,
+  TailoredIcon,
+  InnovationIcon,
+  ClientIcon,
+  ResultsIcon
+} from '../components/icons';
 import { usePageContent } from '../hooks/usePageContent';
 
 const iconMap: { [key: string]: React.ComponentType } = {
   Business: BusinessIcon,
   Mobile: MobileIcon,
   Ecommerce: EcommerceIcon,
+  SME: SMEIcon,
+  RealEstate: RealEstateIcon,
+  Transport: TransportIcon,
+  Finance: FinanceIcon,
+  Tailored: TailoredIcon,
+  Innovation: InnovationIcon,
+  Client: ClientIcon,
+  Results: ResultsIcon,
 };
+
 
 interface Project {
   id: string;
@@ -81,14 +104,15 @@ const HomePage: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
               </span>
-              <span className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">Next-Gen Digital Systems</span>
+              <span className="text-[10px] font-bold text-blue-400 uppercase tracking-[0.2em]">Transforming Businesses and Lives through innovation</span>
             </div>
             <h1 className="hero-title text-gradient leading-[0.9]">
-              {heroBanner?.title || 'Innovative Web & Enterprise Systems'}
+              {heroBanner?.title || 'INNOVATIVE DIGITAL SOLUTIONS'}
             </h1>
             <p className="hero-subtitle mb-12">
               {heroBanner?.subtitle || 'We design and build powerful web applications and enterprise systems that streamline operations, enhance efficiency, and drive business growth.'}
             </p>
+
             <div className="flex flex-col sm:flex-row gap-6">
               <Link to="/contact" className="btn-primary px-10 py-4 text-lg">
                 Start a Project
@@ -135,22 +159,23 @@ const HomePage: React.FC = () => {
             <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
               <div className="glass-card p-10 hover:bg-white/5 transition-all group reveal" style={{ animationDelay: '0.3s' }}>
                 <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-8 group-hover:scale-110 transition-transform">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                  <VisionIcon />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Vision</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">Our Vision</h3>
                 <p className="text-awt-text-secondary text-sm leading-relaxed italic">
-                  "Transforming Business and Lives through Innovation."
+                  "Transforming Businesses and Lives through Innovation."
                 </p>
               </div>
               <div className="glass-card p-10 hover:bg-white/5 transition-all group reveal" style={{ animationDelay: '0.4s' }}>
                 <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-500 mb-8 group-hover:scale-110 transition-transform">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                  <MissionIcon />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Mission</h3>
+                <h3 className="text-2xl font-bold text-white mb-4">Our Mission</h3>
                 <p className="text-awt-text-secondary text-sm leading-relaxed">
                   "To build innovative digital solutions that empower businesses, create opportunities, and drive sustainable economic growth while operating with integrity, excellence, and purpose."
                 </p>
               </div>
+
             </div>
           </div>
         </div>
@@ -202,29 +227,84 @@ const HomePage: React.FC = () => {
       <section className="py-32 relative z-10">
         <div className="container-premium">
           <div className="text-center mb-20 reveal">
-            <h2 className="text-5xl font-extrabold text-white mb-6">State-of-the-Art <span className="text-blue-500">Solutions</span></h2>
+            <h2 className="text-5xl font-extrabold text-white mb-6">What We <span className="text-blue-500">Do</span></h2>
             <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const Icon = iconMap[service.icon];
               return (
-                <div key={service.name} className="glass-card p-10 group cursor-pointer hover:border-blue-500/30 reveal" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-8 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
+                <div key={service.name} className="glass-card p-8 group cursor-pointer hover:border-blue-500/30 reveal" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all duration-500">
                     {Icon ? <Icon /> : <div className="w-8 h-8 rounded-full bg-blue-400" />}
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{service.name}</h3>
-                  <p className="text-awt-text-secondary text-sm leading-relaxed mb-8">{service.description}</p>
-                  <div className="flex items-center text-xs font-bold text-white uppercase tracking-widest group-hover:translate-x-2 transition-transform">
-                    Learn More <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors uppercase tracking-tight">{service.name}</h3>
+                  <p className="text-awt-text-secondary text-xs leading-relaxed mb-6">{service.description}</p>
                 </div>
               );
             })}
           </div>
         </div>
       </section>
+
+      {/* Solutions We Offer - NEW */}
+      <section className="py-32 relative z-10 bg-white/[0.02]">
+        <div className="container-premium">
+          <div className="text-center mb-20 reveal">
+            <h2 className="text-5xl font-extrabold text-white mb-6">Solutions We <span className="text-blue-500">Offer</span></h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {industries.map((industry, index) => {
+              const Icon = iconMap[industry.icon];
+              return (
+                <div key={industry.name} className="glass-card p-10 group reveal" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="flex items-center gap-6 mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                      {Icon ? <Icon /> : <BusinessIcon />}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white uppercase tracking-tight">{industry.name}</h3>
+                      <p className="text-blue-400 text-xs font-bold uppercase tracking-widest">{industry.tagline}</p>
+                    </div>
+                  </div>
+                  <ul className="space-y-4">
+                    {industry.features?.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-awt-text-secondary text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Values - NEW */}
+      <section className="py-32 relative z-10">
+        <div className="container-premium">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {keyValues.map((value, index) => {
+              const Icon = iconMap[value.icon];
+              return (
+                <div key={value.title} className="text-center group reveal" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="w-20 h-20 rounded-full bg-white/5 mx-auto flex items-center justify-center text-blue-500 mb-6 group-hover:bg-blue-500 group-hover:text-white transition-all shadow-xl">
+                    {Icon ? <Icon /> : <div className="w-8 h-8 bg-blue-500 rounded-full" />}
+                  </div>
+                  <h4 className="text-white font-bold mb-2 uppercase text-xs tracking-widest">{value.title}</h4>
+                  <p className="text-[10px] text-awt-text-secondary leading-relaxed max-w-[150px] mx-auto">{value.description}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
 
       {/* Featured Portfolio - Reveal On Scroll Concept */}
       <section className="py-32 relative z-10 bg-white/[0.01]">

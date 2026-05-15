@@ -40,6 +40,47 @@ export const PhoneIcon: React.FC = () => (
   <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
 );
 
+export const SMEIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+);
+
+export const RealEstateIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+);
+
+export const TransportIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path><circle cx="7" cy="17" r="2" strokeWidth="2" /><circle cx="17" cy="17" r="2" strokeWidth="2" /></svg>
+);
+
+export const FinanceIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 21h18M3 10h18M3 7l9-4 9 4M4 10v11m16-11v11M8 14v3m4-3v3m4-3v3"></path></svg>
+);
+
+export const VisionIcon: React.FC = () => (
+  <svg {...iconProps}><circle cx="12" cy="12" r="3" strokeWidth="2"/><circle cx="12" cy="12" r="10" strokeWidth="2"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2" strokeWidth="2"/></svg>
+);
+
+export const MissionIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-7l.5.5"></path></svg>
+);
+
+export const TailoredIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+);
+
+export const InnovationIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.674a1 1 0 00.922-.606l.39-.9a.9.9 0 01.124-.232 3.328 3.328 0 00.526-1.831C16.3 11.192 14.372 9 12 9s-4.3 2.192-4.3 4.431c0 .67.199 1.302.526 1.831a.9.9 0 01.124.232l.39.9a1 1 0 00.922.606zM10 21h4m-2-12V7m4.243 1.243l1.414-1.414M17 12h2M6.343 8.243L4.929 6.829M5 12H3"></path></svg>
+);
+
+export const ClientIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+);
+
+export const ResultsIcon: React.FC = () => (
+  <svg {...iconProps}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+);
+
+
 
 const socialIconProps = {
   className: "w-6 h-6",
