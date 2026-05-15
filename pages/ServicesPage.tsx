@@ -9,13 +9,26 @@ interface Service {
   features: string[];
 }
 import { services as fallbackServices, industries } from '../constants';
-import { BusinessIcon, MobileIcon, EcommerceIcon } from '../components/icons';
+import { 
+  BusinessIcon, 
+  MobileIcon, 
+  EcommerceIcon,
+  SMEIcon,
+  RealEstateIcon,
+  TransportIcon,
+  FinanceIcon
+} from '../components/icons';
 
 const iconMap: { [key: string]: React.ComponentType } = {
   Business: BusinessIcon,
   Mobile: MobileIcon,
   Ecommerce: EcommerceIcon,
+  SME: SMEIcon,
+  RealEstate: RealEstateIcon,
+  Transport: TransportIcon,
+  Finance: FinanceIcon,
 };
+
 
 const ServicesPage: React.FC = () => {
   // Use the specific services provided by the user
@@ -59,30 +72,44 @@ const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Industries We Serve */}
+      {/* Our Solutions */}
       <section className="relative z-10 bg-white/[0.02] py-32">
         <div className="container-premium">
           <div className="text-center mb-24 reveal">
-            <h2 className="text-5xl font-extrabold text-white mb-6">Industries We <span className="text-blue-500 italic">Serve</span></h2>
+            <h2 className="text-5xl font-extrabold text-white mb-6">Our <span className="text-blue-500 italic">Solutions</span></h2>
             <p className="text-awt-text-secondary max-w-2xl mx-auto">We specialize in building custom applications and enterprise systems that solve real business challenges across key sectors.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
             {industries.map((industry, index) => {
               const Icon = iconMap[industry.icon];
               return (
-                <div key={index} className="glass-card p-10 hover:border-blue-500/30 transition-all group reveal" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 mb-8 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                    {Icon ? <Icon /> : <BusinessIcon />}
+                <div key={index} className="glass-card p-12 hover:border-blue-500/30 transition-all group reveal" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div className="flex items-center gap-6 mb-8">
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                      {Icon ? <Icon /> : <BusinessIcon />}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white uppercase tracking-tight">{industry.name}</h3>
+                      <p className="text-blue-400 text-xs font-bold uppercase tracking-widest">{industry.tagline}</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">{industry.name}</h3>
-                  <p className="text-awt-text-secondary text-sm leading-relaxed">{industry.description}</p>
+                  <p className="text-awt-text-secondary mb-8 leading-relaxed">{industry.description}</p>
+                  <ul className="grid sm:grid-cols-2 gap-4">
+                    {industry.features?.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-awt-text-secondary text-sm">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-3"></span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               );
             })}
           </div>
         </div>
       </section>
+
     </div>
   );
 };
