@@ -16,7 +16,7 @@ const Header: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-ui-line">
-      <div className="relative h-0">
+      <div className="relative h-0 pointer-events-none">
         <svg viewBox="0 0 1200 46" preserveAspectRatio="none" className="absolute top-[-1px] left-0 w-full h-[46px]">
           <path d="M0,46 Q600,-10 1200,46" fill="none" stroke="rgba(30,79,214,0.18)" strokeWidth="1.5"/>
         </svg>
@@ -78,10 +78,10 @@ const Header: React.FC = () => {
 
         {/* Mobile Menu Toggle */}
         <button 
-          className="md:hidden p-2 text-content-primary focus:outline-none"
+          className="flex md:hidden p-2 text-content-primary focus:outline-none shrink-0"
           onClick={() => setIsOpen(true)}
         >
-          <Menu className="w-6 h-6" />
+          <Menu className="w-8 h-8" />
         </button>
       </div>
 
@@ -90,55 +90,68 @@ const Header: React.FC = () => {
       {/* Mobile Navigation Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] bg-white pointer-events-auto flex flex-col"
-          >
-            <div className="flex justify-between items-center p-6 border-b border-ui-line">
-              <Link to="/" className="flex items-center gap-[10px]" onClick={() => setIsOpen(false)}>
-                <img src="/assets/img/logo.png" alt="AWT Group" className="h-[36px] w-auto object-contain drop-shadow-sm" />
-                <span className="font-bold text-[19px] text-content-primary">AWT <span className="font-normal text-content-secondary">Group</span></span>
-              </Link>
-              <button onClick={() => setIsOpen(false)} className="p-2 text-content-primary">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
-              <nav className="flex flex-col gap-6">
-                {navLinks.map((link) => (
-                  <Link 
-                    key={link.name} 
-                    to={link.path}
-                    className="text-xl font-display font-semibold text-content-primary hover:text-brand-blue transition-colors flex items-center gap-4"
-                  >
-                    <span className={cn("w-2 h-2 rounded-full", location.pathname === link.path ? "bg-brand-gold" : "bg-ui-line")}></span>
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-              <div className="h-px w-full bg-ui-line my-4" />
-              <div>
-                <h4 className="font-mono text-[11px] tracking-[0.1em] text-brand-gold uppercase mb-6">Our Products</h4>
-                <div className="flex flex-col gap-6">
-                  <Link to="/products/biztracker-pro" className="text-lg font-semibold text-content-primary hover:text-brand-blue transition-colors">
-                    Mysales
-                  </Link>
-                  <Link to="/products/twende" className="text-lg font-semibold text-content-primary hover:text-brand-blue transition-colors">
-                    Twende House Hunting
-                  </Link>
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[9998] bg-brand-black/40 backdrop-blur-sm pointer-events-auto"
+              onClick={() => setIsOpen(false)}
+            />
+            {/* Side Drawer */}
+            <motion.div 
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="fixed top-0 left-0 bottom-0 w-[80vw] max-w-[320px] z-[9999] bg-white shadow-2xl pointer-events-auto flex flex-col"
+            >
+              <div className="flex justify-between items-center p-5 border-b border-ui-line shrink-0">
+                <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                  <img src="/assets/img/logo.png" alt="AWT Group" className="h-[32px] w-auto object-contain drop-shadow-sm" />
+                  <span className="font-bold text-[16px] text-content-primary">AWT Group</span>
+                </Link>
+                <button onClick={() => setIsOpen(false)} className="p-2 -mr-2 text-content-primary focus:outline-none">
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-6">
+                <nav className="flex flex-col gap-5">
+                  {navLinks.map((link) => (
+                    <Link 
+                      key={link.name} 
+                      to={link.path}
+                      onClick={() => setIsOpen(false)}
+                      className="text-[17px] font-display font-semibold text-content-primary hover:text-brand-blue transition-colors flex items-center gap-3"
+                    >
+                      <span className={cn("w-[6px] h-[6px] rounded-full", location.pathname === link.path ? "bg-brand-gold" : "bg-ui-line")}></span>
+                      {link.name}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="h-px w-full bg-ui-line my-2" />
+                <div>
+                  <h4 className="font-mono text-[10px] tracking-[0.1em] text-brand-gold uppercase mb-4">Our Products</h4>
+                  <div className="flex flex-col gap-4">
+                    <Link onClick={() => setIsOpen(false)} to="/products/biztracker-pro" className="text-[15px] font-semibold text-content-primary hover:text-brand-blue transition-colors">
+                      Mysales
+                    </Link>
+                    <Link onClick={() => setIsOpen(false)} to="/products/twende" className="text-[15px] font-semibold text-content-primary hover:text-brand-blue transition-colors">
+                      Twende House Hunting
+                    </Link>
+                  </div>
+                </div>
+                <div className="mt-auto pt-6 flex flex-col gap-3">
+                  <Link onClick={() => setIsOpen(false)} to="/contact" className="cta-btn justify-center w-full py-3 text-[14px]">Start a project →</Link>
+                  {user && (
+                    <Link onClick={() => setIsOpen(false)} to="/hq" className="ghost-btn text-center w-full py-3 text-[14px]">Admin Console</Link>
+                  )}
                 </div>
               </div>
-              <div className="mt-auto pt-8 flex flex-col gap-4">
-                <Link to="/contact" className="cta-btn justify-center w-full py-4 text-base">Start a project →</Link>
-                {user && (
-                  <Link to="/hq" className="ghost-btn text-center w-full py-4 text-base">Admin Console</Link>
-                )}
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
