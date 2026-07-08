@@ -63,7 +63,7 @@ const ContentEditor: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -75,11 +75,11 @@ const ContentEditor: React.FC = () => {
 
         <div className="space-y-12">
           {/* Home Hero Section */}
-          <section className="glass-card p-10 group reveal">
+          <section className="glass-panel rounded-3xl p-10 group reveal">
             <div className="flex flex-col md:flex-row justify-between items-start mb-10 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-white tracking-tight mb-2">Home Page: Hero Engine</h2>
-                <p className="text-awt-text-secondary text-sm">Modify the primary impact section of the website.</p>
+                <p className="text-content-secondary text-sm">Modify the primary impact section of the website.</p>
               </div>
               <button
                 onClick={() => handleSave('home_hero')}
@@ -97,7 +97,7 @@ const ContentEditor: React.FC = () => {
                     <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Primary Headline</label>
                     <input
                       type="text"
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       value={contents['home_hero']?.title || ''}
                       onChange={(e) => handleChange('home_hero', 'title', e.target.value)}
                     />
@@ -105,7 +105,7 @@ const ContentEditor: React.FC = () => {
                   <div>
                     <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Supporting Context</label>
                     <textarea
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                      className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                       rows={4}
                       value={contents['home_hero']?.subtitle || ''}
                       onChange={(e) => handleChange('home_hero', 'subtitle', e.target.value)}
@@ -124,11 +124,11 @@ const ContentEditor: React.FC = () => {
           </section>
 
           {/* Contact Info Section */}
-          <section className="glass-card p-10 group reveal" style={{ animationDelay: '0.1s' }}>
+          <section className="glass-panel rounded-3xl p-10 group reveal" style={{ animationDelay: '0.1s' }}>
             <div className="flex flex-col md:flex-row justify-between items-start mb-10 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-white tracking-tight mb-2">Global Connectivity</h2>
-                <p className="text-awt-text-secondary text-sm">Manage company-wide contact end-points.</p>
+                <p className="text-content-secondary text-sm">Manage company-wide contact end-points.</p>
               </div>
               <button
                 onClick={() => handleSave('contact_info')}
@@ -144,7 +144,7 @@ const ContentEditor: React.FC = () => {
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Contact Protocol (Email)</label>
                 <input
                   type="email"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   value={contents['contact_info']?.email || ''}
                   onChange={(e) => handleChange('contact_info', 'email', e.target.value)}
                 />
@@ -153,7 +153,7 @@ const ContentEditor: React.FC = () => {
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Direct Line (Phone)</label>
                 <input
                   type="text"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   value={contents['contact_info']?.phone || ''}
                   onChange={(e) => handleChange('contact_info', 'phone', e.target.value)}
                 />
@@ -162,7 +162,7 @@ const ContentEditor: React.FC = () => {
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Physical Node (Address)</label>
                 <input
                   type="text"
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   value={contents['contact_info']?.address || ''}
                   onChange={(e) => handleChange('contact_info', 'address', e.target.value)}
                 />
@@ -171,11 +171,11 @@ const ContentEditor: React.FC = () => {
           </section>
 
           {/* About Page Section */}
-          <section className="glass-card p-10 group reveal" style={{ animationDelay: '0.2s' }}>
+          <section className="glass-panel rounded-3xl p-10 group reveal" style={{ animationDelay: '0.2s' }}>
             <div className="flex flex-col md:flex-row justify-between items-start mb-10 gap-6">
               <div>
                 <h2 className="text-2xl font-bold text-white tracking-tight mb-2">Legacy & Purpose</h2>
-                <p className="text-awt-text-secondary text-sm">Edit the mission and vision statements.</p>
+                <p className="text-content-secondary text-sm">Edit the mission and vision statements.</p>
               </div>
               <button
                 onClick={() => handleSave('about_content')}
@@ -190,7 +190,7 @@ const ContentEditor: React.FC = () => {
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Operational Mission</label>
                 <textarea
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   rows={6}
                   value={contents['about_content']?.mission || ''}
                   onChange={(e) => handleChange('about_content', 'mission', e.target.value)}
@@ -199,7 +199,7 @@ const ContentEditor: React.FC = () => {
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Visionary Horizon</label>
                 <textarea
-                  className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                   rows={6}
                   value={contents['about_content']?.vision || ''}
                   onChange={(e) => handleChange('about_content', 'vision', e.target.value)}
@@ -215,3 +215,7 @@ const ContentEditor: React.FC = () => {
 };
 
 export default ContentEditor;
+
+
+
+

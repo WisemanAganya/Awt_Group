@@ -47,16 +47,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, currentImage, label
 
     return (
         <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+            <label className="block text-sm font-medium text-awt-text-primary mb-2">{label}</label>
             <div className="flex items-center space-x-4">
                 {preview && (
                     <img
                         src={preview}
                         alt="Preview"
-                        className="h-20 w-20 object-cover rounded-lg border border-gray-200"
+                        className="h-20 w-20 object-cover rounded-lg border border-white/10"
                     />
                 )}
-                <label className="cursor-pointer bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-awt-primary">
+                <label className="cursor-pointer bg-white/5 py-2 px-3 border border-white/10 rounded-md shadow-sm text-sm leading-4 font-medium text-awt-text-primary hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-awt-bg focus:ring-awt-primary">
                     <span>{uploading ? 'Uploading...' : 'Choose File'}</span>
                     <input
                         type="file"
@@ -67,9 +67,13 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onUpload, currentImage, label
                     />
                 </label>
             </div>
-            <p className="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
+            <p className="mt-1 text-xs text-awt-text-secondary">PNG, JPG, GIF up to 5MB</p>
         </div>
     );
 };
 
 export default ImageUpload;
+
+
+
+

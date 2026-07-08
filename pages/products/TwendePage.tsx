@@ -1,59 +1,114 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Home, ShieldCheck, Video, MessageSquare, CreditCard, ArrowRight, MapPin } from 'lucide-react';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
 
 const TwendePage: React.FC = () => {
   return (
-    <div className="min-h-screen pt-24 pb-12">
-      <div className="container-custom">
-        <div className="flex flex-col lg:flex-row items-center gap-12 mb-20">
-          <div className="lg:w-1/2">
-            <h1 className="hero-title text-gradient mb-6">Twende House Hunting</h1>
-            <p className="hero-subtitle mx-0 mb-8">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 bg-brand-mist opacity-30 z-0 pointer-events-none" />
+
+      {/* Page Header */}
+      <section className="relative z-10 pt-40 pb-24 lg:pt-56 lg:pb-32 border-b border-ui-line bg-white">
+        <div className="wrap text-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-5xl mx-auto">
+            <motion.div variants={fadeIn} className="inline-flex items-center space-x-2 bg-brand-yellow/10 border border-brand-yellow/20 px-4 py-2 rounded-full mb-8">
+              <span className="text-[10px] font-bold text-brand-yellow uppercase tracking-widest">Real Estate Tech</span>
+            </motion.div>
+            
+            <motion.h1 variants={fadeIn} className="text-5xl lg:text-7xl font-display font-extrabold text-content-primary leading-[1.1] mb-8">
+              Twende <span className="text-brand-yellow italic">House Hunting</span>
+            </motion.h1>
+            
+            <motion.p variants={fadeIn} className="text-xl text-content-secondary leading-relaxed max-w-3xl mx-auto mb-12">
               Your trusted companion for finding the perfect home. Browse, compare, and secure your next rental or purchase with absolute confidence.
-            </p>
-            <div className="flex gap-4">
-              <button className="btn-aurora">Browse Properties</button>
-              <Link to="/contact" className="glass-panel px-6 py-3 flex items-center hover:bg-white/10 transition rounded-full">List Your Property</Link>
-            </div>
-          </div>
-          <div className="lg:w-1/2">
-            <div className="glass-panel p-2 rounded-2xl animate-float">
-              <div className="aspect-video rounded-xl bg-gray-800 overflow-hidden relative">
-                {/* Placeholder for actual app demo or image */}
-                <div className="absolute inset-0 bg-gradient-aurora opacity-20"></div>
-                <div className="absolute inset-0 flex items-center justify-center flex-col">
-                  <svg className="w-16 h-16 text-white opacity-80 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-                  <span className="text-xl font-medium text-white/90">Interactive Map View</span>
+            </motion.p>
+            
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row justify-center items-center gap-6">
+              <button className="btn-primary w-full sm:w-auto px-10 py-4 flex justify-center items-center bg-brand-yellow hover:bg-brand-yellow/90 text-background">
+                Browse Properties <ArrowRight className="w-5 h-5 ml-2" />
+              </button>
+              <Link to="/contact" className="bg-white border border-ui-line rounded-lg shadow-sm px-10 py-4 flex items-center justify-center hover:bg-brand-mist/50 transition-colors rounded-full font-bold uppercase tracking-widest text-xs border-ui-line hover:border-brand-yellow/30 text-content-primary">
+                List Your Property
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Interactive Map Preview */}
+      <section className="py-24 relative z-10">
+        <div className="wrap">
+           <motion.div 
+             initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+             className="bg-white border border-ui-line rounded-lg shadow-sm p-4 md:p-6 rounded-[2.5rem] relative overflow-hidden group border-brand-yellow/20"
+           >
+              <div className="aspect-[21/9] rounded-[2rem] bg-background overflow-hidden relative border border-ui-line">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center opacity-40 transition-transform duration-1000 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                
+                <div className="absolute inset-0 flex items-center justify-center flex-col pointer-events-none">
+                  <div className="w-20 h-20 rounded-full bg-brand-yellow/20 flex items-center justify-center mb-6 text-brand-yellow backdrop-blur-md border border-brand-yellow/30 animate-pulse">
+                    <MapPin className="w-10 h-10" />
+                  </div>
+                  <span className="text-3xl font-display font-bold text-content-primary shadow-sm">Interactive Map View</span>
+                  <span className="text-brand-yellow font-bold uppercase tracking-widest text-xs mt-4">Coming Soon</span>
                 </div>
               </div>
-            </div>
-          </div>
+           </motion.div>
         </div>
+      </section>
 
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Why Choose Twende House Hunting?</h2>
-          <div className="w-24 h-1 bg-aurora-primary mx-auto rounded-full bg-gradient-aurora"></div>
-        </div>
+      {/* Why Choose Twende */}
+      <section className="py-24 lg:py-32 relative z-10 bg-brand-mist/30 border-y border-ui-line">
+        <div className="wrap">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center mb-20">
+            <h2 className="text-4xl lg:text-5xl font-display font-extrabold text-content-primary mb-6">Why Choose <span className="text-brand-yellow italic">Twende?</span></h2>
+            <div className="w-20 h-1.5 bg-gradient-to-r from-brand-yellow to-brand-blue mx-auto rounded-full mt-10" />
+          </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: 'Verified Listings', desc: 'Every property is physically verified by our team to prevent fraud.', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
-            { title: 'Virtual Tours', desc: 'Explore homes from your couch with our immersive 3D virtual tours.', icon: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' },
-            { title: 'Direct Contact', desc: 'Chat directly with landlords and property managers without middlemen.', icon: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' },
-            { title: 'Secure Payments', desc: 'Pay your deposit and rent securely through our integrated platform.', icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' }
-          ].map((feature, i) => (
-            <div key={i} className="glass-panel p-6 hover:-translate-y-2 transition duration-300">
-              <svg className="w-10 h-10 text-blue-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d={feature.icon}></path>
-              </svg>
-              <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-              <p className="text-gray-400 text-sm">{feature.desc}</p>
-            </div>
-          ))}
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          >
+            {[
+              { title: 'Verified Listings', desc: 'Every property is physically verified by our team to prevent fraud.', icon: ShieldCheck },
+              { title: 'Virtual Tours', desc: 'Explore homes from your couch with our immersive 3D virtual tours.', icon: Video },
+              { title: 'Direct Contact', desc: 'Chat directly with landlords and property managers without middlemen.', icon: MessageSquare },
+              { title: 'Secure Payments', desc: 'Pay your deposit and rent securely through our integrated platform.', icon: CreditCard }
+            ].map((feature, i) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div key={i} variants={fadeIn} className="bg-white border border-ui-line rounded-lg shadow-sm hover:border-brand-blue hover:-translate-y-1 transition-all duration-300 p-8 lg:p-10 rounded-3xl group flex flex-col items-center text-center">
+                  <div className="w-16 h-16 rounded-2xl bg-brand-yellow/10 flex items-center justify-center mb-6 text-brand-yellow border border-brand-yellow/20 group-hover:bg-brand-yellow group-hover:text-background transition-colors duration-500 shadow-xl">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-content-primary group-hover:text-brand-yellow transition-colors">{feature.title}</h3>
+                  <p className="text-content-secondary leading-relaxed text-sm">{feature.desc}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 };
 
 export default TwendePage;
+
+
+
+

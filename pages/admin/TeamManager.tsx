@@ -83,7 +83,7 @@ const TeamManager: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -95,7 +95,7 @@ const TeamManager: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Form Area */}
-          <div className="glass-card p-10 reveal">
+          <div className="glass-panel rounded-3xl p-10 reveal">
             <h2 className="text-2xl font-bold text-white mb-10 tracking-tight flex items-center">
               <span className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mr-4">
                 {editingId ? 'U' : '+'}
@@ -106,19 +106,19 @@ const TeamManager: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Entity Name</label>
-                  <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Full Name" />
+                  <input type="text" value={name} onChange={e => setName(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Full Name" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Operational Role</label>
-                  <input type="text" value={role} onChange={e => setRole(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Designation" />
+                  <input type="text" value={role} onChange={e => setRole(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Designation" />
                 </div>
               </div>
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Entity Biography</label>
-                <textarea value={bio} onChange={e => setBio(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} placeholder="Background data..." />
+                <textarea value={bio} onChange={e => setBio(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} placeholder="Background data..." />
               </div>
 
-              <div className="glass-card p-6 bg-white/[0.02]">
+              <div className="glass-panel rounded-3xl p-6 bg-white/[0.02]">
                 <ImageUpload onUpload={setPhotoUrl} currentImage={photoUrl} label="Visual Identification (Photo)" />
               </div>
 
@@ -138,7 +138,7 @@ const TeamManager: React.FC = () => {
           {/* List Area */}
           <div className="space-y-8 reveal" style={{ animationDelay: '0.2s' }}>
              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center">
-              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-awt-text-secondary mr-4">L</span>
+              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-content-secondary mr-4">L</span>
               Active Personnel
             </h2>
             <div className="space-y-4 max-h-[800px] overflow-y-auto pr-4 custom-scrollbar">
@@ -147,10 +147,10 @@ const TeamManager: React.FC = () => {
                   <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
                 </div>
               ) : members.length === 0 ? (
-                <div className="glass-card p-20 text-center text-awt-text-secondary text-sm">No personnel detected in this sector.</div>
+                <div className="glass-panel rounded-3xl p-20 text-center text-content-secondary text-sm">No personnel detected in this sector.</div>
               ) : (
                 members.map(member => (
-                  <div key={member.id} className="glass-card p-6 group flex items-center gap-6 transition-all border-white/5 hover:bg-white/[0.03]">
+                  <div key={member.id} className="glass-panel rounded-3xl p-6 group flex items-center gap-6 transition-all border-glass-border hover:bg-white/[0.03]">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden bg-blue-500/10 flex-shrink-0 relative group-hover:scale-110 transition-transform">
                       {member.photo_url ? (
                         <img src={member.photo_url} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -160,7 +160,7 @@ const TeamManager: React.FC = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-lg font-bold text-white truncate group-hover:text-blue-400 transition-colors">{member.name}</h3>
-                      <p className="text-awt-text-secondary text-xs uppercase tracking-widest">{member.role}</p>
+                      <p className="text-content-secondary text-xs uppercase tracking-widest">{member.role}</p>
                     </div>
                     <div className="flex gap-4">
                        <button onClick={() => handleEdit(member)} className="text-blue-500 opacity-0 group-hover:opacity-100 hover:text-white transition-all">
@@ -183,3 +183,7 @@ const TeamManager: React.FC = () => {
 };
 
 export default TeamManager;
+
+
+
+

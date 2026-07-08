@@ -1,32 +1,34 @@
 
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { HashRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import AboutPage from './pages/AboutPage';
-import ServicesPage from './pages/ServicesPage';
-import PortfolioPage from './pages/PortfolioPage';
-import ContactPage from './pages/ContactPage';
-import CareersPage from './pages/CareersPage';
-import BlogPage from './pages/BlogPage';
-import LoginPage from './pages/LoginPage';
-// import SignupPage from './pages/SignupPage';
-import BizTrackerPage from './pages/products/BizTrackerPage';
-import TwendePage from './pages/products/TwendePage';
-import AdminLayout from './components/AdminLayout';
-import AdminDashboard from './pages/admin/Dashboard';
-import ServicesManager from './pages/admin/ServicesManager';
-import PortfolioManager from './pages/admin/PortfolioManager';
-import TeamManager from './pages/admin/TeamManager';
-import MessagesPage from './pages/admin/MessagesPage';
-import UsersPage from './pages/admin/UsersPage';
-import AuditLogsPage from './pages/admin/AuditLogsPage';
-import SettingsPage from './pages/admin/SettingsPage';
-import ContentEditor from './pages/admin/ContentEditor';
-import HeroManager from './pages/admin/HeroManager';
-import ReportsDashboard from './pages/admin/ReportsDashboard';
-import ProductsManager from './pages/admin/ProductsManager';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const CareersPage = lazy(() => import('./pages/CareersPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+// const SignupPage = lazy(() => import('./pages/SignupPage'));
+const BizTrackerPage = lazy(() => import('./pages/products/BizTrackerPage'));
+const TwendePage = lazy(() => import('./pages/products/TwendePage'));
+
+const AdminLayout = lazy(() => import('./components/AdminLayout'));
+const AdminDashboard = lazy(() => import('./pages/admin/Dashboard'));
+const ServicesManager = lazy(() => import('./pages/admin/ServicesManager'));
+const PortfolioManager = lazy(() => import('./pages/admin/PortfolioManager'));
+const TeamManager = lazy(() => import('./pages/admin/TeamManager'));
+const MessagesPage = lazy(() => import('./pages/admin/MessagesPage'));
+const UsersPage = lazy(() => import('./pages/admin/UsersPage'));
+const AuditLogsPage = lazy(() => import('./pages/admin/AuditLogsPage'));
+const SettingsPage = lazy(() => import('./pages/admin/SettingsPage'));
+const ContentEditor = lazy(() => import('./pages/admin/ContentEditor'));
+const HeroManager = lazy(() => import('./pages/admin/HeroManager'));
+const ReportsDashboard = lazy(() => import('./pages/admin/ReportsDashboard'));
+const ProductsManager = lazy(() => import('./pages/admin/ProductsManager'));
 
 
 
@@ -48,43 +50,45 @@ const App: React.FC = () => {
       <div className="flex flex-col min-h-screen bg-awt-bg font-sans text-awt-text-primary">
         <Header />
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="/careers" element={<CareersPage />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/vanguard-access" element={<LoginPage />} />
-            {/* <Route path="/signup" element={<SignupPage />} /> */}
-            <Route path="/products/biztracker-pro" element={<BizTrackerPage />} />
-            <Route path="/products/twende" element={<TwendePage />} />
+          <Suspense fallback={<div className="min-h-[50vh] flex items-center justify-center"><div className="w-8 h-8 border-2 border-brand-blue border-t-transparent rounded-full animate-spin" /></div>}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="/careers" element={<CareersPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/vanguard-access" element={<LoginPage />} />
+              {/* <Route path="/signup" element={<SignupPage />} /> */}
+              <Route path="/products/biztracker-pro" element={<BizTrackerPage />} />
+              <Route path="/products/twende" element={<TwendePage />} />
 
-            {/* Admin Routes - Secured with ProtectedRoute */}
-            <Route path="/hq" element={
-              <ProtectedRoute requireAdmin={true}>
-                <AdminLayout />
-              </ProtectedRoute>
-            }>
-              <Route index element={<AdminDashboard />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="services" element={<ServicesManager />} />
-              <Route path="portfolio" element={<PortfolioManager />} />
-              <Route path="team" element={<TeamManager />} />
-              <Route path="messages" element={<MessagesPage />} />
-              <Route path="logs" element={<AuditLogsPage />} />
-              <Route path="settings" element={<SettingsPage />} />
-              <Route path="content" element={<ContentEditor />} />
-              <Route path="hero" element={<HeroManager />} />
-              <Route path="reports" element={<ReportsDashboard />} />
-              <Route path="products" element={<ProductsManager />} />
-            </Route>
+              {/* Admin Routes - Secured with ProtectedRoute */}
+              <Route path="/hq" element={
+                <ProtectedRoute requireAdmin={true}>
+                  <AdminLayout />
+                </ProtectedRoute>
+              }>
+                <Route index element={<AdminDashboard />} />
+                <Route path="users" element={<UsersPage />} />
+                <Route path="services" element={<ServicesManager />} />
+                <Route path="portfolio" element={<PortfolioManager />} />
+                <Route path="team" element={<TeamManager />} />
+                <Route path="messages" element={<MessagesPage />} />
+                <Route path="logs" element={<AuditLogsPage />} />
+                <Route path="settings" element={<SettingsPage />} />
+                <Route path="content" element={<ContentEditor />} />
+                <Route path="hero" element={<HeroManager />} />
+                <Route path="reports" element={<ReportsDashboard />} />
+                <Route path="products" element={<ProductsManager />} />
+              </Route>
 
-            {/* Redirect any old admin links or unauthorized access attempts */}
-            <Route path="/admin" element={<Navigate to="/hq" replace />} />
-            <Route path="/login" element={<Navigate to="/vanguard-access" replace />} />
-          </Routes>
+              {/* Redirect any old admin links or unauthorized access attempts */}
+              <Route path="/admin" element={<Navigate to="/hq" replace />} />
+              <Route path="/login" element={<Navigate to="/vanguard-access" replace />} />
+            </Routes>
+          </Suspense>
         </main>
         <Footer />
       </div>
@@ -93,3 +97,7 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
+

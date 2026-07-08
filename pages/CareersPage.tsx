@@ -1,98 +1,131 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Rocket, GraduationCap, HeartHandshake, MapPin, Clock, ArrowRight } from 'lucide-react';
 import { jobOpenings } from '../constants';
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
 
 const CareersPage: React.FC = () => {
   return (
-    <div className="min-h-screen pt-32 pb-20 relative overflow-hidden">
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-500/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"></div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 bg-brand-mist opacity-30 z-0 pointer-events-none" />
 
       {/* Page Header */}
-      <section className="relative z-10 mb-24">
-        <div className="container-custom text-center animate-float">
-          <h1 className="hero-title text-gradient mb-6">Join Our Team</h1>
-          <p className="hero-subtitle text-xl max-w-3xl mx-auto">
-            Be a part of a visionary team that's building state-of-the-art technological solutions and shaping the digital future of Africa.
-          </p>
+      <section className="relative z-10 pt-40 pb-24 lg:pt-56 lg:pb-32 bg-brand-mist border-b border-black/[0.04]">
+        <div className="wrap text-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl mx-auto">
+            <motion.div variants={fadeIn} className="div-line justify-center mb-[24px]">
+              <div className="bar"></div>
+              <div className="txt">Careers</div>
+              <div className="bar"></div>
+            </motion.div>
+            
+            <motion.h1 variants={fadeIn} className="text-[clamp(38px,5.6vw,64px)] font-display font-bold text-brand-black leading-[1.06] mb-[26px]">
+              Join Our <span className="text-brand-blue italic">Team</span>
+            </motion.h1>
+            
+            <motion.p variants={fadeIn} className="text-[17px] text-black/70 leading-[1.65] max-w-[520px] mx-auto">
+              Be a part of a visionary team that's building state-of-the-art technological solutions and shaping the digital future of Africa.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
       
       {/* Why Work With Us */}
-      <section className="relative z-10 mb-32">
-        <div className="container-custom">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Why Work at AWT Group?</h2>
-              <p className="max-w-3xl mx-auto text-gray-400 text-lg">
-                  We are more than just a company; we are a community of passionate individuals dedicated to excellence. We offer a dynamic work environment, opportunities for professional growth, and a chance to work on impactful projects.
-              </p>
-            </div>
+      <section className="py-[120px] relative z-10 bg-white">
+        <div className="wrap">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center max-w-[600px] mx-auto mb-[64px]">
+            <div className="div-line justify-center"><div className="bar"></div><div className="txt">Benefits</div><div className="bar"></div></div>
+            <h2 className="text-[36px] font-semibold mt-[16px] mb-[12px] text-brand-black">Why Work at AWT Group?</h2>
+            <p className="text-[16px] text-black/70 leading-[1.65]">
+              We are a community of passionate individuals dedicated to excellence. We offer a dynamic work environment, opportunities for professional growth, and a chance to work on impactful projects.
+            </p>
+          </motion.div>
             
-            <div className="grid md:grid-cols-3 gap-8">
-                <div className="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-aurora flex items-center justify-center mb-6 text-white shadow-lg shadow-blue-500/20">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Innovative Projects</h3>
-                    <p className="text-gray-400 leading-relaxed">Work with cutting-edge technologies on state-of-the-art applications that solve real-world problems.</p>
-                </div>
-                <div className="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 relative overflow-hidden group">
-                    <div className="absolute top-0 left-0 w-32 h-32 bg-cyan-500/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-aurora flex items-center justify-center mb-6 text-white shadow-lg shadow-cyan-500/20">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Professional Growth</h3>
-                    <p className="text-gray-400 leading-relaxed">We invest heavily in our team's development through continuous training, mentorship, and challenging opportunities.</p>
-                </div>
-                <div className="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 relative overflow-hidden group">
-                    <div className="absolute bottom-0 right-0 w-32 h-32 bg-purple-500/10 blur-2xl rounded-full group-hover:scale-150 transition-transform duration-700"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-gradient-aurora flex items-center justify-center mb-6 text-white shadow-lg shadow-purple-500/20">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                    </div>
-                    <h3 className="text-2xl font-bold mb-4 text-white">Collaborative Culture</h3>
-                    <p className="text-gray-400 leading-relaxed">Join a highly supportive and collaborative team where your ideas are valued and your voice drives innovation.</p>
-                </div>
-            </div>
+          <motion.div 
+            initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-[28px]"
+          >
+            <motion.div variants={fadeIn} className="bg-brand-mist border border-black/[0.04] p-[40px] rounded-[16px] relative overflow-hidden group hover:-translate-y-[6px] transition-transform duration-300">
+              <div className="w-16 h-16 rounded-[12px] bg-white text-brand-blue border border-black/[0.04] flex items-center justify-center mb-[24px] shadow-sm">
+                <Rocket className="w-8 h-8" />
+              </div>
+              <h3 className="text-[20px] font-bold mb-[12px] text-brand-black group-hover:text-brand-blue transition-colors">Innovative Projects</h3>
+              <p className="text-black/70 text-[15px] leading-[1.65]">Work with cutting-edge technologies on state-of-the-art applications that solve real-world problems.</p>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="bg-brand-mist border border-black/[0.04] p-[40px] rounded-[16px] relative overflow-hidden group hover:-translate-y-[6px] transition-transform duration-300">
+              <div className="w-16 h-16 rounded-[12px] bg-white text-brand-gold border border-black/[0.04] flex items-center justify-center mb-[24px] shadow-sm">
+                <GraduationCap className="w-8 h-8" />
+              </div>
+              <h3 className="text-[20px] font-bold mb-[12px] text-brand-black group-hover:text-brand-gold transition-colors">Professional Growth</h3>
+              <p className="text-black/70 text-[15px] leading-[1.65]">We invest heavily in our team's development through continuous training, mentorship, and challenging opportunities.</p>
+            </motion.div>
+
+            <motion.div variants={fadeIn} className="bg-brand-mist border border-black/[0.04] p-[40px] rounded-[16px] relative overflow-hidden group hover:-translate-y-[6px] transition-transform duration-300">
+              <div className="w-16 h-16 rounded-[12px] bg-white text-[#4C7BFF] border border-black/[0.04] flex items-center justify-center mb-[24px] shadow-sm">
+                <HeartHandshake className="w-8 h-8" />
+              </div>
+              <h3 className="text-[20px] font-bold mb-[12px] text-brand-black group-hover:text-[#4C7BFF] transition-colors">Collaborative Culture</h3>
+              <p className="text-black/70 text-[15px] leading-[1.65]">Join a highly supportive and collaborative team where your ideas are valued and your voice drives innovation.</p>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Current Openings */}
-      <section className="relative z-10">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Current Openings</h2>
-            <div className="w-24 h-1 bg-gradient-aurora mx-auto rounded-full"></div>
-          </div>
+      <section className="py-[120px] relative z-10 bg-brand-mist border-y border-black/[0.04]">
+        <div className="wrap">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center mb-[64px]">
+            <h2 className="text-[36px] font-semibold text-brand-black mb-[16px]">Current Openings</h2>
+            <div className="div-line justify-center"><div className="bar"></div></div>
+          </motion.div>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-[800px] mx-auto">
             {jobOpenings.length === 0 ? (
-              <div className="glass-panel p-10 text-center text-gray-400">There are currently no open positions. Please check back later.</div>
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="bg-white border border-black/[0.04] p-[40px] text-center rounded-[16px]">
+                <p className="text-black/70 text-[15px]">There are currently no open positions. Please check back later.</p>
+              </motion.div>
             ) : (
-              <div className="space-y-6">
+              <motion.div 
+                initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+                className="space-y-[16px]"
+              >
                 {jobOpenings.map((job, index) => (
-                  <div key={index} className="glass-panel p-8 flex flex-col sm:flex-row justify-between items-center hover:border-blue-500/50 transition-colors duration-300 group">
-                    <div className="text-center sm:text-left mb-6 sm:mb-0">
-                      <h3 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">{job.title}</h3>
-                      <div className="flex flex-wrap gap-3 mt-3 justify-center sm:justify-start">
-                        <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-300 text-sm font-semibold">{job.department}</span>
-                        <span className="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-sm font-semibold flex items-center">
-                          <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                  <motion.div key={index} variants={fadeIn} className="bg-white border border-black/[0.04] hover:-translate-y-[2px] transition-transform duration-300 p-[32px] rounded-[16px] flex flex-col md:flex-row justify-between items-start md:items-center gap-[24px] group shadow-sm hover:shadow-md">
+                    <div className="flex-1">
+                      <h3 className="text-[20px] font-bold text-brand-black mb-[12px] group-hover:text-brand-blue transition-colors">{job.title}</h3>
+                      <div className="flex flex-wrap gap-[12px]">
+                        <span className="px-[12px] py-[4px] rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold uppercase tracking-[0.1em] border border-brand-blue/20">
+                          {job.department}
+                        </span>
+                        <span className="px-[12px] py-[4px] rounded-full bg-brand-mist text-black/60 text-[10px] font-bold uppercase tracking-[0.1em] border border-black/10 flex items-center">
+                          <MapPin className="w-3 h-3 mr-[6px]" />
                           {job.location}
                         </span>
-                        <span className="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-sm font-semibold flex items-center">
-                          <svg className="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span className="px-[12px] py-[4px] rounded-full bg-brand-mist text-black/60 text-[10px] font-bold uppercase tracking-[0.1em] border border-black/10 flex items-center">
+                          <Clock className="w-3 h-3 mr-[6px]" />
                           {job.type}
                         </span>
                       </div>
                     </div>
-                    <div>
-                      <a href={`mailto:careers@awtgroup.com?subject=Application for ${job.title}`} className="btn-aurora px-8 py-3 whitespace-nowrap">
-                        Apply Now
+                    <div className="w-full md:w-auto">
+                      <a href={`mailto:careers@awtgroup.co.ke?subject=Application for ${job.title}`} className="cta-btn w-full md:w-auto !py-[12px] !px-[24px] !text-[13px] flex justify-center items-center">
+                        Apply Now <ArrowRight className="w-4 h-4 ml-[8px]" />
                       </a>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             )}
           </div>
         </div>
@@ -102,3 +135,7 @@ const CareersPage: React.FC = () => {
 };
 
 export default CareersPage;
+
+
+
+

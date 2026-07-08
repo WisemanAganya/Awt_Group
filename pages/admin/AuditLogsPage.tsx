@@ -42,7 +42,7 @@ const AuditLogsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -57,20 +57,20 @@ const AuditLogsPage: React.FC = () => {
         </div>
 
         {error && (
-           <div className="glass-card p-8 mb-12 border-blue-500/20 bg-blue-500/5 reveal">
+           <div className="glass-panel rounded-3xl p-8 mb-12 border-blue-500/20 bg-blue-500/5 reveal">
               <div className="flex items-center gap-6">
                  <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400">
                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                  </div>
                  <div>
                     <h4 className="text-white font-bold tracking-tight">{error}</h4>
-                    <p className="text-awt-text-secondary text-xs mt-1">Initialize the SQL schema in your terminal or Supabase console to enable real-time tracking.</p>
+                    <p className="text-content-secondary text-xs mt-1">Initialize the SQL schema in your terminal or Supabase console to enable real-time tracking.</p>
                  </div>
               </div>
            </div>
         )}
 
-        <div className="glass-card overflow-hidden reveal">
+        <div className="glass-panel rounded-3xl overflow-hidden reveal">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-white/5">
               <thead className="bg-white/5">
@@ -90,7 +90,7 @@ const AuditLogsPage: React.FC = () => {
                       </span>
                     </td>
                     <td className="px-8 py-6">
-                      <pre className="text-[10px] text-awt-text-secondary font-mono bg-white/[0.02] p-3 rounded-lg max-w-[300px] overflow-hidden truncate">
+                      <pre className="text-[10px] text-content-secondary font-mono bg-white/[0.02] p-3 rounded-lg max-w-[300px] overflow-hidden truncate">
                         {JSON.stringify(log.details)}
                       </pre>
                     </td>
@@ -106,7 +106,7 @@ const AuditLogsPage: React.FC = () => {
             </table>
           </div>
           {logs.length === 0 && !loading && !error && (
-            <div className="py-20 text-center text-awt-text-secondary text-sm italic">No chronos signals detected in the current cycle.</div>
+            <div className="py-20 text-center text-content-secondary text-sm italic">No chronos signals detected in the current cycle.</div>
           )}
         </div>
       </div>
@@ -116,3 +116,7 @@ const AuditLogsPage: React.FC = () => {
 };
 
 export default AuditLogsPage;
+
+
+
+

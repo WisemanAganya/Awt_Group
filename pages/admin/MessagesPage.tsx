@@ -40,7 +40,7 @@ const MessagesPage: React.FC = () => {
 
     return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -50,13 +50,13 @@ const MessagesPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="glass-card overflow-hidden reveal">
+        <div className="glass-panel rounded-3xl overflow-hidden reveal">
           {loading ? (
              <div className="flex justify-center py-40">
                <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
              </div>
           ) : messages.length === 0 ? (
-             <div className="py-40 text-center text-awt-text-secondary text-sm">No incoming signals detected in the current cycle.</div>
+             <div className="py-40 text-center text-content-secondary text-sm">No incoming signals detected in the current cycle.</div>
           ) : (
             <ul className="divide-y divide-white/5">
               {messages.map((msg) => (
@@ -64,24 +64,24 @@ const MessagesPage: React.FC = () => {
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-4 mb-4">
-                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black ${!msg.is_read ? 'bg-blue-500 text-white' : 'bg-white/5 text-awt-text-secondary'}`}>
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black ${!msg.is_read ? 'bg-blue-500 text-white' : 'bg-white/5 text-content-secondary'}`}>
                           {msg.name.charAt(0)}
                         </div>
                         <div>
                           <p className={`text-sm font-bold ${!msg.is_read ? 'text-blue-400' : 'text-white'}`}>
-                            {msg.name} <span className="text-awt-text-secondary font-medium ml-2">{msg.email}</span>
+                            {msg.name} <span className="text-content-secondary font-medium ml-2">{msg.email}</span>
                           </p>
                           <p className="text-[9px] font-bold text-white/20 uppercase tracking-[0.2em]">{new Date(msg.created_at).toLocaleString()}</p>
                         </div>
                       </div>
                       <h3 className="text-lg font-bold text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">{msg.subject}</h3>
-                      <p className="text-awt-text-secondary text-sm leading-relaxed line-clamp-3">{msg.message}</p>
+                      <p className="text-content-secondary text-sm leading-relaxed line-clamp-3">{msg.message}</p>
                     </div>
                     <div className="flex md:flex-col gap-4 items-center md:items-end">
                       <button 
                         onClick={() => toggleRead(msg)} 
                         className={`text-[9px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full transition-all ${
-                          !msg.is_read ? 'bg-blue-500 text-white shadow-[0_0_20px_rgba(0,87,184,0.3)]' : 'bg-white/5 text-awt-text-secondary hover:text-white'
+                          !msg.is_read ? 'bg-blue-500 text-white shadow-[0_0_20px_rgba(0,87,184,0.3)]' : 'bg-white/5 text-content-secondary hover:text-white'
                         }`}
                       >
                         {msg.is_read ? 'Mark Unread' : 'Mark Read'}
@@ -102,3 +102,7 @@ const MessagesPage: React.FC = () => {
 };
 
 export default MessagesPage;
+
+
+
+

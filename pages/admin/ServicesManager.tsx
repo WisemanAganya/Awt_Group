@@ -84,7 +84,7 @@ const ServicesManager: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -96,7 +96,7 @@ const ServicesManager: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Form Area */}
-          <div className="glass-card p-10 reveal">
+          <div className="glass-panel rounded-3xl p-10 reveal">
              <h2 className="text-2xl font-bold text-white mb-10 tracking-tight flex items-center">
               <span className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mr-4">
                 {editingId ? 'U' : '+'}
@@ -106,18 +106,18 @@ const ServicesManager: React.FC = () => {
             <form onSubmit={handleSave} className="space-y-8">
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Module Designation (Title)</label>
-                <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Service Name" />
+                <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Service Name" />
               </div>
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Functional Description</label>
-                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} required placeholder="What does this service provide?" />
+                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} required placeholder="What does this service provide?" />
               </div>
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Sub-Features (Comma Separated Signal)</label>
-                <input type="text" value={featuresInput} onChange={e => setFeaturesInput(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" placeholder="Feature A, Feature B..." />
+                <input type="text" value={featuresInput} onChange={e => setFeaturesInput(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" placeholder="Feature A, Feature B..." />
               </div>
 
-              <div className="glass-card p-6 bg-white/[0.02]">
+              <div className="glass-panel rounded-3xl p-6 bg-white/[0.02]">
                 <ImageUpload onUpload={setImageUrl} currentImage={imageUrl} label="Visual Module Identity" />
               </div>
 
@@ -137,7 +137,7 @@ const ServicesManager: React.FC = () => {
           {/* List Area */}
           <div className="space-y-8 reveal" style={{ animationDelay: '0.2s' }}>
              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center">
-              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-awt-text-secondary mr-4">M</span>
+              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-content-secondary mr-4">M</span>
               Active System Modules
             </h2>
             <div className="space-y-4 max-h-[800px] overflow-y-auto pr-4 custom-scrollbar">
@@ -146,10 +146,10 @@ const ServicesManager: React.FC = () => {
                    <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
                  </div>
               ) : services.length === 0 ? (
-                 <div className="glass-card p-20 text-center text-awt-text-secondary text-sm">No service modules detected.</div>
+                 <div className="glass-panel rounded-3xl p-20 text-center text-content-secondary text-sm">No service modules detected.</div>
               ) : (
                 services.map(service => (
-                  <div key={service.id} className="glass-card p-6 group flex items-start gap-6 transition-all border-white/5 hover:bg-white/[0.03]">
+                  <div key={service.id} className="glass-panel rounded-3xl p-6 group flex items-start gap-6 transition-all border-glass-border hover:bg-white/[0.03]">
                     <div className="w-16 h-16 rounded-2xl overflow-hidden bg-blue-500/10 flex-shrink-0 relative group-hover:scale-110 transition-transform">
                       {service.image_url ? (
                         <img src={service.image_url} alt={service.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -159,7 +159,7 @@ const ServicesManager: React.FC = () => {
                     </div>
                     <div className="flex-1 min-w-0">
                       <h3 className="text-lg font-bold text-white truncate group-hover:text-blue-400 transition-colors">{service.title}</h3>
-                      <p className="text-awt-text-secondary text-xs line-clamp-2 leading-relaxed">{service.description}</p>
+                      <p className="text-content-secondary text-xs line-clamp-2 leading-relaxed">{service.description}</p>
                       <div className="mt-2 flex flex-wrap gap-2">
                         {service.features.slice(0, 3).map((f, i) => (
                           <span key={i} className="text-[8px] font-bold text-white/40 uppercase tracking-widest bg-white/5 px-2 py-0.5 rounded-full">{f}</span>
@@ -187,3 +187,7 @@ const ServicesManager: React.FC = () => {
 };
 
 export default ServicesManager;
+
+
+
+

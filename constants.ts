@@ -12,51 +12,56 @@ export const navLinks = [
 export const services = [
     { 
         name: "Web Application Development", 
-        description: "Scalable, secure, and high-performance web applications tailored to your business processes.", 
+        description: "Scalable, secure, and user-friendly web solutions designed to simplify and grow your business.", 
         icon: 'Mobile' 
     },
     { 
         name: "Enterprise Systems & POS Solutions", 
-        description: "Robust enterprise systems and POS solutions that automate operations, improve accuracy, and drive efficiency.", 
+        description: "Powerful systems that automate processes, enhance productivity, and improve control.", 
         icon: 'Business' 
     },
     { 
         name: "Business Process Automation", 
-        description: "Digitize and automate workflows to reduce manual tasks, cut costs, and boost productivity.", 
+        description: "Digitalize and optimize workflows to reduce costs, increase efficiency, and maximize performance.", 
         icon: 'Ecommerce' 
     },
     { 
         name: "IT Consultation & Prototyping", 
-        description: "From idea to solution - we consult, design, and prototype systems that align with your business goals.", 
+        description: "Expert advice and rapid prototyping to turn your ideas into scalable digital solutions.", 
+        icon: 'Business' 
+    },
+    { 
+        name: "System Maintenance & Support", 
+        description: "Reliable support and maintenance to keep your systems secure and performing at best.", 
         icon: 'Business' 
     },
 ];
 
 export const industries = [
     { 
-        name: "For SME's", 
-        description: "Custom business systems, inventory & sales management, accounting & reporting tools, and workflow automation.", 
+        name: "SME's", 
+        description: "Empowering small and medium businesses with digital systems that drive efficiency and sustainable growth.", 
         tagline: "Simplify operations. Grow faster.",
         icon: 'SME',
         features: ["Custom business systems", "Inventory & sales management", "Accounting & reporting tools", "Workflow automation"]
     },
     { 
-        name: "For Real Estate", 
-        description: "Property management systems, listings & property portals, rent collection & invoicing, and client & agent management.", 
-        tagline: "Manage properties. Maximize value.",
-        icon: 'RealEstate',
-        features: ["Property management systems", "Listings & property portals", "Rent collection & invoicing", "Client & agent management"]
-    },
-    { 
-        name: "For Transportation", 
-        description: "Fleet management systems, booking & ticketing systems, route & schedule management, and driver & vehicle tracking.", 
+        name: "Transportation", 
+        description: "Designing smart, secure systems including fleet management, logistics solutions, and a ride hailing platform.", 
         tagline: "Move smarter. Deliver better.",
         icon: 'Transport',
         features: ["Fleet management systems", "Booking & ticketing systems", "Route & schedule management", "Driver & vehicle tracking"]
     },
     { 
-        name: "For Finance", 
-        description: "Loan & credit management, financial reporting systems, and transaction management.", 
+        name: "Real Estate", 
+        description: "Digital solutions for property management, listings, client relations, and seamless real estate operations.", 
+        tagline: "Manage properties. Maximize value.",
+        icon: 'RealEstate',
+        features: ["Property management systems", "Listings & property portals", "Rent collection & invoicing", "Client & agent management"]
+    },
+    { 
+        name: "Finance", 
+        description: "Secure financial systems that streamline transactions, reporting, and compliance.", 
         tagline: "Efficient systems. Better decisions.",
         icon: 'Finance',
         features: ["Loan & credit management", "Financial reporting systems", "Transaction management"]
@@ -64,8 +69,8 @@ export const industries = [
 ];
 
 export const keyValues = [
-    { title: "Tailored Solutions", description: "We build solutions that fit your unique business needs and goals.", icon: "Tailored" },
-    { title: "Innovation Driven", description: "We leverage the latest technology to deliver smarter solutions.", icon: "Innovation" },
+    { title: "Tailored Solutions", description: "We build solutions that fit your unique business needs.", icon: "Tailored" },
+    { title: "Innovation Driven", description: "We leverage the latest technologies to deliver smarter solutions.", icon: "Innovation" },
     { title: "Client Focused", description: "We work closely with you from concept to successful delivery.", icon: "Client" },
     { title: "Results That Matter", description: "Our solutions drive efficiency, growth, and measurable impact.", icon: "Results" },
 ];
@@ -101,16 +106,8 @@ export const portfolioProjects = [
         description: "An executive cocktail and bar management system offering seamless booking, inventory tracking, and a premium digital experience for high-end hospitality venues.",
         category: "Hospitality", 
         image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=2070",
-        link: "https://njo-bar.vercel.app/",
+        link: "https://njo-bar-liart.vercel.app/",
         github: "https://github.com/WisemanAganya/NJO-Bar"
-    },
-    { 
-        title: "AWT Group", 
-        description: "The official corporate ecosystem for AWT Group, showcasing high-performance digital systems, IT consultation, and transformative business solutions.",
-        category: "Corporate Solutions", 
-        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2069",
-        link: "https://awt-group.vercel.app/",
-        github: "https://github.com/WisemanAganya/Awt_Group"
     },
     { 
         title: "Tweletu Band", 

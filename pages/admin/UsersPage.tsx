@@ -92,7 +92,7 @@ const UsersPage: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -106,7 +106,7 @@ const UsersPage: React.FC = () => {
           </button>
         </div>
 
-        <div className="glass-card overflow-hidden reveal">
+        <div className="glass-panel rounded-3xl overflow-hidden reveal">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-white/5">
               <thead className="bg-white/5">
@@ -127,7 +127,7 @@ const UsersPage: React.FC = () => {
                         </div>
                         <div className="min-w-0">
                           <div className="text-sm font-bold text-white truncate max-w-[200px]">{user.email}</div>
-                          <div className="text-[10px] text-awt-text-secondary uppercase tracking-widest">{user.user_metadata?.name || 'Unregistered Entity'}</div>
+                          <div className="text-[10px] text-content-secondary uppercase tracking-widest">{user.user_metadata?.name || 'Unregistered Entity'}</div>
                         </div>
                       </div>
                     </td>
@@ -135,12 +135,12 @@ const UsersPage: React.FC = () => {
                        <select
                           value={user.role || 'user'}
                           onChange={(e) => handleRoleUpdate(user.id, e.target.value)}
-                          className={`bg-white/5 border border-white/10 rounded-full px-4 py-1 text-[10px] font-bold uppercase tracking-widest cursor-pointer focus:ring-2 focus:ring-blue-500/50 transition-all ${
-                            user.role === 'admin' ? 'text-blue-400 border-blue-500/30 bg-blue-500/5' : 'text-awt-text-secondary'
+                          className={`bg-surface border border-glass-border rounded-full px-4 py-1 text-[10px] font-bold uppercase tracking-widest cursor-pointer focus:ring-2 focus:ring-blue-500/50 transition-all ${
+                            user.role === 'admin' ? 'text-blue-400 border-blue-500/30 bg-blue-500/5' : 'text-content-secondary'
                           }`}
                         >
-                          <option value="user" className="bg-awt-bg">Standard User</option>
-                          <option value="admin" className="bg-awt-bg">System Admin</option>
+                          <option value="user" className="bg-background">Standard User</option>
+                          <option value="admin" className="bg-background">System Admin</option>
                         </select>
                     </td>
                     <td className="px-8 py-6 whitespace-nowrap text-[10px] text-white/20 font-mono tracking-tighter">
@@ -160,7 +160,7 @@ const UsersPage: React.FC = () => {
             </table>
           </div>
           {users.length === 0 && !loading && (
-             <div className="py-20 text-center text-awt-text-secondary text-sm">No entities detected in the current registry scope.</div>
+             <div className="py-20 text-center text-content-secondary text-sm">No entities detected in the current registry scope.</div>
           )}
         </div>
       </div>
@@ -170,3 +170,7 @@ const UsersPage: React.FC = () => {
 };
 
 export default UsersPage;
+
+
+
+

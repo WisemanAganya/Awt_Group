@@ -85,7 +85,7 @@ const SettingsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -95,7 +95,7 @@ const SettingsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="glass-card p-10 reveal">
+        <div className="glass-panel rounded-3xl p-10 reveal">
           <h2 className="text-2xl font-bold text-white mb-10 tracking-tight flex items-center">
             <span className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mr-4">S</span>
             Visual Identity Configuration
@@ -112,17 +112,17 @@ const SettingsPage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Logo Settings */}
-            <div className="glass-card p-8 bg-white/[0.02] hover:bg-white/[0.04] transition-all group">
+            <div className="glass-panel rounded-3xl p-8 bg-white/[0.02] hover:bg-white/[0.04] transition-all group">
               <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-6 block">Primary Brand Mark (Logo)</label>
               <div className="flex flex-col items-center gap-8">
                 <div className="relative group/img">
                   {logoUrl ? (
-                    <img className="h-32 w-32 object-contain rounded-2xl bg-white/5 border border-white/10 p-4 transition-transform group-hover/img:scale-105" src={logoUrl} alt="Current logo" />
+                    <img className="h-32 w-32 object-contain rounded-2xl bg-surface border border-glass-border p-4 transition-transform group-hover/img:scale-105" src={logoUrl} alt="Current logo" />
                   ) : (
-                    <div className="h-32 w-32 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white/20 font-black italic">AWT</div>
+                    <div className="h-32 w-32 bg-surface border border-glass-border rounded-2xl flex items-center justify-center text-white/20 font-black italic">AWT</div>
                   )}
                   {uploading && (
-                    <div className="absolute inset-0 bg-awt-bg/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                        <div className="w-8 h-8 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
                     </div>
                   )}
@@ -136,7 +136,7 @@ const SettingsPage: React.FC = () => {
                     disabled={uploading}
                     className="hidden"
                   />
-                  <label htmlFor="logo-upload" className="btn-secondary w-full py-4 text-[10px] font-black uppercase tracking-widest cursor-pointer flex justify-center items-center gap-2 group-hover:bg-white/10">
+                  <label htmlFor="logo-upload" className="btn-secondary w-full py-4 text-[10px] font-black uppercase tracking-widest cursor-pointer flex justify-center items-center gap-2 group-hover:bg-black/10">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
                     Re-Map Logo
                   </label>
@@ -145,17 +145,17 @@ const SettingsPage: React.FC = () => {
             </div>
 
             {/* Icon Settings */}
-            <div className="glass-card p-8 bg-white/[0.02] hover:bg-white/[0.04] transition-all group">
+            <div className="glass-panel rounded-3xl p-8 bg-white/[0.02] hover:bg-white/[0.04] transition-all group">
               <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-6 block">System Node Icon (Favicon)</label>
               <div className="flex flex-col items-center gap-8">
                  <div className="relative group/img">
                   {iconUrl ? (
-                    <img className="h-32 w-32 object-contain rounded-2xl bg-white/5 border border-white/10 p-8 transition-transform group-hover/img:scale-105" src={iconUrl} alt="Current icon" />
+                    <img className="h-32 w-32 object-contain rounded-2xl bg-surface border border-glass-border p-8 transition-transform group-hover/img:scale-105" src={iconUrl} alt="Current icon" />
                   ) : (
-                    <div className="h-32 w-32 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center text-white/20 font-black italic">ICO</div>
+                    <div className="h-32 w-32 bg-surface border border-glass-border rounded-2xl flex items-center justify-center text-white/20 font-black italic">ICO</div>
                   )}
                   {uploading && (
-                    <div className="absolute inset-0 bg-awt-bg/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-2xl flex items-center justify-center">
                        <div className="w-8 h-8 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
                     </div>
                   )}
@@ -169,7 +169,7 @@ const SettingsPage: React.FC = () => {
                     disabled={uploading}
                     className="hidden"
                   />
-                  <label htmlFor="icon-upload" className="btn-secondary w-full py-4 text-[10px] font-black uppercase tracking-widest cursor-pointer flex justify-center items-center gap-2 group-hover:bg-white/10">
+                  <label htmlFor="icon-upload" className="btn-secondary w-full py-4 text-[10px] font-black uppercase tracking-widest cursor-pointer flex justify-center items-center gap-2 group-hover:bg-black/10">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
                     Re-Map Icon
                   </label>
@@ -178,14 +178,14 @@ const SettingsPage: React.FC = () => {
             </div>
           </div>
 
-          <div className="mt-16 p-8 glass-card bg-blue-500/5 border-blue-500/20">
+          <div className="mt-16 p-8 glass-panel rounded-3xl bg-blue-500/5 border-blue-500/20">
              <div className="flex items-center gap-6">
                 <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <div>
                    <h4 className="text-white font-bold tracking-tight">Deployment Protocol</h4>
-                   <p className="text-awt-text-secondary text-xs mt-1">Updates to these matrix nodes will synchronize across the entire Digital Vanguard network in real-time.</p>
+                   <p className="text-content-secondary text-xs mt-1">Updates to these matrix nodes will synchronize across the entire Digital Vanguard network in real-time.</p>
                 </div>
              </div>
           </div>
@@ -197,3 +197,7 @@ const SettingsPage: React.FC = () => {
 };
 
 export default SettingsPage;
+
+
+
+

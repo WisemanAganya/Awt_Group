@@ -88,7 +88,7 @@ const PortfolioManager: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -100,7 +100,7 @@ const PortfolioManager: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Form Area */}
-          <div className="glass-card p-10 reveal">
+          <div className="glass-panel rounded-3xl p-10 reveal">
              <h2 className="text-2xl font-bold text-white mb-10 tracking-tight flex items-center">
               <span className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 mr-4">
                 {editingId ? 'U' : '+'}
@@ -111,23 +111,23 @@ const PortfolioManager: React.FC = () => {
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
                   <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Artifact Title</label>
-                  <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Project Name" />
+                  <input type="text" value={title} onChange={e => setTitle(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="Project Name" />
                 </div>
                 <div>
                   <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Classification (Category)</label>
-                  <input type="text" value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="e.g. Mobile App" />
+                  <input type="text" value={category} onChange={e => setCategory(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" required placeholder="e.g. Mobile App" />
                 </div>
               </div>
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Creative Narrative (Description)</label>
-                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} required placeholder="Tell the story of this project..." />
+                <textarea value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" rows={4} required placeholder="Tell the story of this project..." />
               </div>
               <div>
                 <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest ml-4 mb-2 block">Digital Link (URL)</label>
-                <input type="url" value={link} onChange={e => setLink(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" placeholder="https://..." />
+                <input type="url" value={link} onChange={e => setLink(e.target.value)} className="w-full bg-surface border border-glass-border rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50" placeholder="https://..." />
               </div>
 
-              <div className="glass-card p-6 bg-white/[0.02]">
+              <div className="glass-panel rounded-3xl p-6 bg-white/[0.02]">
                 <ImageUpload onUpload={setImageUrl} currentImage={imageUrl} label="Visual Artifact Identity" />
               </div>
 
@@ -147,7 +147,7 @@ const PortfolioManager: React.FC = () => {
           {/* List Area */}
           <div className="space-y-8 reveal" style={{ animationDelay: '0.2s' }}>
              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center">
-              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-awt-text-secondary mr-4">V</span>
+              <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-content-secondary mr-4">V</span>
               Archived Artifacts
             </h2>
             <div className="space-y-4 max-h-[800px] overflow-y-auto pr-4 custom-scrollbar">
@@ -156,10 +156,10 @@ const PortfolioManager: React.FC = () => {
                   <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
                 </div>
               ) : projects.length === 0 ? (
-                <div className="glass-card p-20 text-center text-awt-text-secondary text-sm">No artifacts detected in the vault.</div>
+                <div className="glass-panel rounded-3xl p-20 text-center text-content-secondary text-sm">No artifacts detected in the vault.</div>
               ) : (
                 projects.map(project => (
-                  <div key={project.id} className="glass-card p-6 group flex items-start gap-6 transition-all border-white/5 hover:bg-white/[0.03]">
+                  <div key={project.id} className="glass-panel rounded-3xl p-6 group flex items-start gap-6 transition-all border-glass-border hover:bg-white/[0.03]">
                     <div className="w-24 h-24 rounded-2xl overflow-hidden bg-blue-500/10 flex-shrink-0 relative group-hover:scale-105 transition-transform">
                       {project.image_url ? (
                         <img src={project.image_url} alt={project.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
@@ -180,7 +180,7 @@ const PortfolioManager: React.FC = () => {
                         </div>
                       </div>
                       <span className="text-[9px] font-black uppercase tracking-[0.2em] text-blue-400 mb-2 block">{project.category}</span>
-                      <p className="text-awt-text-secondary text-xs line-clamp-2 leading-relaxed">{project.description}</p>
+                      <p className="text-content-secondary text-xs line-clamp-2 leading-relaxed">{project.description}</p>
                     </div>
                   </div>
                 ))
@@ -195,3 +195,7 @@ const PortfolioManager: React.FC = () => {
 };
 
 export default PortfolioManager;
+
+
+
+

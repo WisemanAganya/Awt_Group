@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowRight, ExternalLink, Loader2 } from 'lucide-react';
+import { GithubIcon } from '../components/icons';
 import { portfolioProjects } from '../constants';
-
 
 interface Project {
   id: string;
@@ -13,6 +15,16 @@ interface Project {
   link: string;
   github?: string;
 }
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+};
 
 const PortfolioPage: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -48,87 +60,110 @@ const PortfolioPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen pt-48 pb-32 relative">
-      <div className="bg-mesh"></div>
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 bg-brand-mist opacity-30 z-0 pointer-events-none" />
 
       {/* Portfolio Header */}
-      <section className="relative z-10 mb-20">
-        <div className="container-premium text-center reveal">
-          <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-widest mb-8">
-            Our Legacy
-          </div>
-          <h1 className="hero-title text-gradient mb-8">Digital Masterpieces</h1>
-          <p className="hero-subtitle text-xl max-w-3xl mx-auto">
-            A curated collection of high-performance systems and transformative digital experiences built for industry leaders.
-          </p>
+      <section className="relative z-10 pt-40 pb-24 lg:pt-56 lg:pb-32 bg-brand-mist border-b border-black/[0.04]">
+        <div className="wrap text-center">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="max-w-4xl mx-auto">
+            <motion.div variants={fadeIn} className="div-line justify-center mb-[24px]">
+              <div className="bar"></div>
+              <div className="txt">Our Legacy</div>
+              <div className="bar"></div>
+            </motion.div>
+            
+            <motion.h1 variants={fadeIn} className="text-[clamp(38px,5.6vw,64px)] font-display font-bold text-brand-black leading-[1.06] mb-[26px]">
+              Digital <span className="text-brand-blue italic">Masterpieces</span>
+            </motion.h1>
+            
+            <motion.p variants={fadeIn} className="text-[17px] text-black/70 leading-[1.65] max-w-[520px] mx-auto">
+              A curated collection of high-performance systems and transformative digital experiences built for industry leaders.
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="relative z-10">
-        <div className="container-premium">
+      <section className="py-[120px] relative z-10 bg-white">
+        <div className="wrap">
           {loading ? (
             <div className="flex justify-center items-center h-64">
-              <div className="w-12 h-12 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin"></div>
+              <Loader2 className="w-12 h-12 text-brand-blue animate-spin" />
             </div>
           ) : projects.length === 0 ? (
-            <div className="glass-card p-20 text-center text-awt-text-secondary text-lg reveal">No projects found.</div>
+            <div className="bg-brand-mist border border-black/[0.04] rounded-[16px] p-20 text-center text-black/70 text-lg">No projects found.</div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <motion.div 
+              initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-[28px]"
+            >
               {projects.map((project, idx) => (
-                <div key={project.id} className="glass-card group reveal flex flex-col" style={{ animationDelay: `${idx * 0.1}s` }}>
-                  <div className="relative h-72 overflow-hidden w-full">
-                    <div className="absolute inset-0 bg-blue-900/40 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                <motion.div key={project.id} variants={fadeIn} className="bg-white border border-black/[0.04] rounded-[16px] overflow-hidden hover:-translate-y-[6px] transition-transform duration-300 flex flex-col h-full">
+                  <div className="relative h-[220px] overflow-hidden w-full">
+                    <div className="absolute inset-0 bg-brand-black/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
                     <img 
                       src={project.image_url || "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426"} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
+                      className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" 
                     />
-                    <div className="absolute top-6 left-6 z-20 glass-card !rounded-full px-4 py-1.5 text-[10px] font-bold text-white uppercase tracking-widest backdrop-blur-xl border-white/20">
+                    <div className="absolute top-4 left-4 z-20 bg-white border border-black/[0.04] px-[12px] py-[4px] rounded-full text-[10px] font-bold text-brand-black uppercase tracking-[0.1em] shadow-sm">
                       {project.category}
                     </div>
                   </div>
-                  <div className="p-8 flex flex-col flex-grow">
-                    <h2 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">{project.title}</h2>
-                    <p className="text-awt-text-secondary text-sm leading-relaxed mb-8 flex-grow">{project.description}</p>
+                  
+                  <div className="p-[32px] flex flex-col flex-grow">
+                    <h2 className="text-[20px] font-bold mb-[12px] text-brand-black transition-colors">{project.title}</h2>
+                    <p className="text-black/70 text-[14px] leading-[1.65] mb-[32px] flex-grow">{project.description}</p>
                     
-                    <div className="flex flex-wrap gap-6 mt-auto">
-                        {project.link && (
-                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-bold text-white hover:text-blue-400 uppercase tracking-widest transition-all group/link">
+                    <div className="flex flex-wrap gap-[12px] mt-auto">
+                      {project.link && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="ghost-btn !text-brand-black !border-black/10 hover:!border-brand-blue hover:!text-brand-blue !px-[16px] !py-[8px] !text-[11px] uppercase tracking-[0.1em] font-bold inline-flex items-center">
                             Live Demo
-                            <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <ExternalLink className="w-3 h-3 ml-[6px] mb-[1px]" />
                         </a>
-                        )}
-                        {project.github && (
-                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-xs font-bold text-awt-text-secondary hover:text-white uppercase tracking-widest transition-all group/link">
+                      )}
+                      {project.github && (
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="ghost-btn !text-black/60 !border-black/10 hover:!border-brand-black hover:!text-brand-black !px-[16px] !py-[8px] !text-[11px] uppercase tracking-[0.1em] font-bold inline-flex items-center">
+                            <GithubIcon className="w-3 h-3 mr-[6px] mb-[1px]" />
                             GitHub
-                            <svg className="w-4 h-4 ml-2 transform group-hover/link:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                         </a>
-                        )}
+                      )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
 
-
       {/* CTA Section */}
-      <section className="mt-40 relative z-10">
-        <div className="container-premium">
-          <div className="glass-card p-16 md:p-24 text-center relative overflow-hidden group reveal">
-             <div className="absolute inset-0 bg-blue-500/[0.02] pointer-events-none"></div>
-             <h2 className="text-5xl font-extrabold text-white mb-8 relative z-10">Build the Next <span className="text-blue-500">Benchmark</span></h2>
-             <p className="text-xl text-awt-text-secondary mb-12 max-w-2xl mx-auto relative z-10">Join our legacy of technological excellence. Let's engineer something extraordinary for your business.</p>
-             <Link to="/contact" className="btn-primary text-lg px-12 py-4 relative z-10 shadow-[0_0_40px_rgba(0,87,184,0.2)]">Initiate Proposal</Link>
-          </div>
+      <section className="py-[110px] relative z-10 bg-brand-black text-white text-center">
+        <div className="wrap">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
+            className="max-w-[600px] mx-auto"
+          >
+            <div className="div-line"><div className="bar"></div><div className="txt !text-brand-gold">Let's Build</div><div className="bar"></div></div>
+            <h2 className="text-[clamp(30px,4vw,44px)] font-semibold mt-[20px] mb-[30px]">
+              Build the Next Benchmark
+            </h2>
+            <div className="flex justify-center">
+              <Link to="/contact" className="cta-btn !bg-brand-blue hover:!bg-brand-gold">
+                Initiate Proposal →
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
   );
-
 };
 
 export default PortfolioPage;
+
+
+
+

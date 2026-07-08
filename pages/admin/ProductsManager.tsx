@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 const ProductsManager: React.FC = () => {
   const [products] = useState([
-    { id: 1, name: 'BizTracker Pro', category: 'SaaS', status: 'Active', subscriptions: 89 },
+    { id: 1, name: 'Mysales', category: 'SaaS', status: 'Active', subscriptions: 89 },
     { id: 2, name: 'Twende House Hunting', category: 'Platform', status: 'Active', subscriptions: 156 },
   ]);
 
   return (
     <div className="min-h-screen pt-4 pb-20 relative">
-      <div className="container-premium relative z-10 reveal">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
             <div className="inline-flex items-center space-x-2 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full mb-4">
@@ -22,7 +22,7 @@ const ProductsManager: React.FC = () => {
           </button>
         </div>
 
-        <div className="glass-card overflow-hidden reveal" style={{ animationDelay: '0.2s' }}>
+        <div className="glass-panel rounded-3xl overflow-hidden reveal" style={{ animationDelay: '0.2s' }}>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-white/5">
               <thead className="bg-white/5">
@@ -46,14 +46,14 @@ const ProductsManager: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-8 py-6 whitespace-nowrap">
-                      <div className="text-xs font-bold text-awt-text-secondary uppercase tracking-widest">{product.category}</div>
+                      <div className="text-xs font-bold text-content-secondary uppercase tracking-widest">{product.category}</div>
                     </td>
                     <td className="px-8 py-6 whitespace-nowrap">
                       <span className="px-3 py-1 inline-flex text-[9px] leading-5 font-black rounded-full bg-blue-500/10 text-blue-400 uppercase tracking-widest">
                         {product.status}
                       </span>
                     </td>
-                    <td className="px-8 py-6 whitespace-nowrap text-sm text-awt-text-secondary font-mono">
+                    <td className="px-8 py-6 whitespace-nowrap text-sm text-content-secondary font-mono">
                       {product.subscriptions.toString().padStart(3, '0')}
                     </td>
                     <td className="px-8 py-6 whitespace-nowrap text-right text-xs font-bold">
@@ -73,3 +73,7 @@ const ProductsManager: React.FC = () => {
 };
 
 export default ProductsManager;
+
+
+
+
