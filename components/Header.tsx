@@ -14,7 +14,8 @@ const Header: React.FC = () => {
   useEffect(() => setIsOpen(false), [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-ui-line">
+    <>
+      <header className="sticky top-0 z-50 bg-white/92 backdrop-blur-md border-b border-ui-line">
       <div className="relative h-0">
         <svg viewBox="0 0 1200 46" preserveAspectRatio="none" className="absolute top-[-1px] left-0 w-full h-[46px]">
           <path d="M0,46 Q600,-10 1200,46" fill="none" stroke="rgba(30,79,214,0.18)" strokeWidth="1.5"/>
@@ -84,6 +85,8 @@ const Header: React.FC = () => {
         </button>
       </div>
 
+      </header>
+
       {/* Mobile Navigation Overlay */}
       <AnimatePresence>
         {isOpen && (
@@ -92,7 +95,7 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-white pointer-events-auto flex flex-col"
+            className="fixed inset-0 z-[100] bg-white pointer-events-auto flex flex-col"
           >
             <div className="flex justify-between items-center p-6 border-b border-ui-line">
               <Link to="/" className="flex items-center gap-[10px]" onClick={() => setIsOpen(false)}>
@@ -138,7 +141,7 @@ const Header: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
 
